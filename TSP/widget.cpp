@@ -13,6 +13,26 @@ Widget::~Widget()
     delete ui;
 }
 
+void Widget::AssignStartValue(double (&distance_matrix)[QUANT_POINTS][QUANT_POINTS] )   //initialize matrix of distance
+{
+    for(int i=0;i<QUANT_POINTS;i++)
+        for(int j=0;j<QUANT_POINTS;j++)
+            distance_matrix[i][j]=_INFINITY;
+}
+
+void Widget::AssignValueFromFile(double (&point_distance)[QUANT_POINTS][QUANT_POINTS], QFile & file)
+{
+     QStringList query;                             //for split line and write it on this QString list
+    while(!file.atEnd())       //until the end of the file
+{
+     QString str;                           //buffer for read line from file
+     str=file.readLine();                  //read line from file
+     QRegExp rx("(\\ )");                   //RegEx for ' ' or ',' or '.' or ':' or '\t'
+     query = str.split(rx);                 //split line and assign to query
+     point_distance[QString(query[0]).toInt()-1][QString(query[1]).toInt()-1]=QString(query[2]).toInt();    //fill in distance matrix
+     point_distance[QString(query[1]).toInt()-1][QString(query[0]).toInt()-1]=QString(query[2]).toInt();    //matrix symetrical so a[0][1]=a[1][0]
+}
+}
 void Widget::Error_CantOpenFile(QString path)   //error if can't open file for read
 {
     QMessageBox Msgbox;
@@ -47,7 +67,7 @@ void Widget::ShowDataTableFromFile(int quantity_points, double matrix_distance[]
 void Widget::on_pushButton_clicked()
 {
 
-    const QString lFileName("file.txt");
+    const QString lFileName(ui->editFileName->text());
 
 
     if (!QFile::exists(lFileName))      //if file with this name non exist
@@ -66,22 +86,14 @@ void Widget::on_pushButton_clicked()
              return void();
     }
 
-     QStringList query;
-         int quantity_points=QString(lFile.readLine()).toInt();     //quantity points read from first line of file
-        double point_distance[100][100]={0};    //matrix distance between points
 
-        while(!lFile.atEnd())       //until the end of the file
-    {
-         QString str;                           //buffer for read line from file
-         str=lFile.readLine();                  //read line from file
-         QRegExp rx("(\\ )");                   //RegEx for ' ' or ',' or '.' or ':' or '\t'
-         query = str.split(rx);                 //split line and assign to query
-         point_distance[QString(query[0]).toInt()-1][QString(query[1]).toInt()-1]=QString(query[2]).toInt();    //fill in distance matrix
-         point_distance[QString(query[1]).toInt()-1][QString(query[0]).toInt()-1]=QString(query[2]).toInt();    //matrix symetrical so a[0][1]=a[1][0]
-    }
-
+    int quantity_points=QString(lFile.readLine()).toInt();     //quantity points read from first line of file
+    double point_distance[QUANT_POINTS][QUANT_POINTS]={_INFINITY};    //matrix distance between points
+    AssignStartValue(point_distance);                   //set start value (infinity for each cell)
+    AssignValueFromFile(point_distance, lFile);         //set value for each cell from file
     lFile.close();                              //close file
     ShowDataTableFromFile(quantity_points, point_distance);                    //show matrix of distance on tableview
+
 }
 
 void Widget::on_pushButton_2_clicked()

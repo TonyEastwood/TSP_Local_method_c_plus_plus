@@ -38,7 +38,7 @@ public:
         Widget->resize(870, 559);
         pushButton = new QPushButton(Widget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(0, 120, 89, 25));
+        pushButton->setGeometry(QRect(300, 10, 271, 25));
         labelFileName = new QLabel(Widget);
         labelFileName->setObjectName(QStringLiteral("labelFileName"));
         labelFileName->setGeometry(QRect(20, 20, 121, 17));
@@ -47,7 +47,7 @@ public:
         pushButton_2->setGeometry(QRect(550, 530, 89, 25));
         tableView = new QTableView(Widget);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(110, 50, 701, 451));
+        tableView->setGeometry(QRect(140, 60, 701, 451));
         editFileName = new QLineEdit(Widget);
         editFileName->setObjectName(QStringLiteral("editFileName"));
         editFileName->setGeometry(QRect(160, 10, 113, 25));
@@ -60,7 +60,7 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
-        pushButton->setText(QApplication::translate("Widget", "PushButton", nullptr));
+        pushButton->setText(QApplication::translate("Widget", "Open file and show data in table", nullptr));
         labelFileName->setText(QApplication::translate("Widget", "FileName or path", nullptr));
         pushButton_2->setText(QApplication::translate("Widget", "PushButton", nullptr));
     } // retranslateUi
