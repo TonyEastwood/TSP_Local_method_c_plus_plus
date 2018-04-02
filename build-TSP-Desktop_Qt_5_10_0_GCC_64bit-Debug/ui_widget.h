@@ -44,7 +44,7 @@ public:
         labelFileName->setGeometry(QRect(20, 20, 121, 17));
         pushButton_2 = new QPushButton(Widget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(550, 530, 89, 25));
+        pushButton_2->setGeometry(QRect(20, 90, 89, 25));
         tableView = new QTableView(Widget);
         tableView->setObjectName(QStringLiteral("tableView"));
         tableView->setGeometry(QRect(140, 60, 701, 451));
@@ -62,7 +62,7 @@ public:
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
         pushButton->setText(QApplication::translate("Widget", "Open file and show data in table", nullptr));
         labelFileName->setText(QApplication::translate("Widget", "FileName or path", nullptr));
-        pushButton_2->setText(QApplication::translate("Widget", "PushButton", nullptr));
+        pushButton_2->setText(QApplication::translate("Widget", "Open Form TSP", nullptr));
     } // retranslateUi
 
 };

@@ -93,10 +93,10 @@ void Widget::on_pushButton_clicked()
     AssignValueFromFile(point_distance, lFile);         //set value for each cell from file
     lFile.close();                              //close file
     ShowDataTableFromFile(quantity_points, point_distance);                    //show matrix of distance on tableview
-
+    tspform = new TSPResult(point_distance, quantity_points);
 }
 
 void Widget::on_pushButton_2_clicked()
 {
-
+    tspform->show();
 }
