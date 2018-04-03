@@ -16,6 +16,7 @@ public:
     TSPResult(double (&)[QUANT_POINTS][QUANT_POINTS], int );            //constructor with parameters
     QString AlgorythmStartPath(double [QUANT_POINTS][QUANT_POINTS], int, double &);  //geedy algorythm search start short path
     QString AlgotythmDoubleReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, double replace
+    QString AlgotythmTrippleReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, tripple replace
     //Original massive, start position (point that will be start ), and length of path (sum) , type double
     ~TSPResult();
 
@@ -24,11 +25,12 @@ private slots:
 
     void on_buttDoubleReplacement_clicked();
 
+    void on_buttTripleReplacement_clicked();
+
 private:
     void Swap(int (&)[QUANT_POINTS], int, int);
     double CalcPathLength(double [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS]);
-    int CurrentShortPath[QUANT_POINTS];                       //massive that contain path like '1 2 6 3 4' that search due to geedy algorythm
-    QString ConvertFromPathToQString();                    //convert bool matrix to QString like '1->5->6->3->1' !!!!!!!!!!!!1
+    int CurrentShortPath[QUANT_POINTS];                       //massive that contain path like '1 2 6 3 4' that search due to geedy algoryth
     double point_distance[QUANT_POINTS][QUANT_POINTS];    //matrix distance between points
     int quantity_points;                                   //quantity points in matrix
      void InitialInvolvePoints(bool (&)[QUANT_POINTS], int);     //set all value 'false'
