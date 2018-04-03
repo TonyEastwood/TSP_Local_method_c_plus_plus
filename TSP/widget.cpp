@@ -47,7 +47,7 @@ void Widget::Error_FileNonExistent(QString path)    //error if file non exist
        Msgbox.setText("Copy your file '"+path+"' in current directory");
        Msgbox.exec();
 }
-void Widget::ShowDataTableFromFile(int quantity_points, double matrix_distance[][100])      //show matrix distance in table view
+void Widget::ShowDataTableFromFile(int quantity_points, double matrix_distance[][QUANT_POINTS])      //show matrix distance in table view
 {
     QStringList horizHeader;
     for(int i=0;i<quantity_points;i++)                  //add all column

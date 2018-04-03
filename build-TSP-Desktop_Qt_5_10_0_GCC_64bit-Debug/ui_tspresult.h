@@ -98,22 +98,22 @@ public:
         labelPath->setGeometry(QRect(460, 30, 67, 17));
         labelPathStart = new QLabel(TSPResult);
         labelPathStart->setObjectName(QStringLiteral("labelPathStart"));
-        labelPathStart->setGeometry(QRect(460, 80, 67, 17));
+        labelPathStart->setGeometry(QRect(460, 80, 271, 17));
         labelPath2 = new QLabel(TSPResult);
         labelPath2->setObjectName(QStringLiteral("labelPath2"));
-        labelPath2->setGeometry(QRect(480, 120, 67, 17));
+        labelPath2->setGeometry(QRect(480, 120, 351, 17));
         labelPath3 = new QLabel(TSPResult);
         labelPath3->setObjectName(QStringLiteral("labelPath3"));
-        labelPath3->setGeometry(QRect(470, 210, 67, 17));
+        labelPath3->setGeometry(QRect(470, 210, 371, 17));
         labelPath4 = new QLabel(TSPResult);
         labelPath4->setObjectName(QStringLiteral("labelPath4"));
-        labelPath4->setGeometry(QRect(490, 290, 67, 17));
+        labelPath4->setGeometry(QRect(490, 290, 321, 17));
         labelStartPoint = new QLabel(TSPResult);
         labelStartPoint->setObjectName(QStringLiteral("labelStartPoint"));
-        labelStartPoint->setGeometry(QRect(60, 370, 111, 17));
+        labelStartPoint->setGeometry(QRect(60, 370, 331, 17));
         editStartPoint = new QLineEdit(TSPResult);
         editStartPoint->setObjectName(QStringLiteral("editStartPoint"));
-        editStartPoint->setGeometry(QRect(190, 370, 113, 25));
+        editStartPoint->setGeometry(QRect(50, 400, 113, 25));
 
         retranslateUi(TSPResult);
 
