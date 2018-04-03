@@ -3,6 +3,7 @@
 #define QUANT_POINTS 15            //max quantity of points that file can involve   (if points so many, app can crash )
 #define _INFINITY  1000000          //max distance between points
 #include <QWidget>
+#include <QElapsedTimer>
 namespace Ui {
 class TSPResult;
 }
@@ -30,7 +31,12 @@ private slots:
 
     void on_buttFourthReplacement_clicked();
 
+    void on_buttAllAlgorythm_clicked();
+
 private:
+    int AlgoTime[4];
+    double AlgoLength[4];
+    QElapsedTimer timer;
     void Swap(int (&)[QUANT_POINTS], int, int);
     double CalcPathLength(double [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS]);
     int CurrentShortPath[QUANT_POINTS];                       //massive that contain path like '1 2 6 3 4' that search due to geedy algoryth

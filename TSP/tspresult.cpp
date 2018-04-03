@@ -79,7 +79,6 @@ QString TSPResult::AlgotythmDoubleReplace(double original_massive[QUANT_POINTS][
     int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
     for(int i=0; i<quantity_points;i++)     //copy massive to changing from Current ShortPath
         int_path[i]=CurrentShortPath[i];
-
     for(int i=1;i<quantity_points-1;i++)        //replace two points and compare result
     {
         path_length=CalcPathLength(original_massive, int_path);     //calc current length path
@@ -198,9 +197,13 @@ void TSPResult::on_buttStartPath_clicked()      //search start path via geedy al
 
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;
+    timer.start();
     ui->labelPathStart->setText(AlgorythmStartPath(point_distance, start, path_length ));
     //show short path in label '1->2...->1'
+    AlgoTime[0]=timer.nsecsElapsed();
+        ui->labelTimeStart->setText(QString::number(AlgoTime[0]));
     ui->labelResultStart->setText(QString::number(path_length));    //show path length (sum all distance )
+    AlgoLength[0]=path_length;
 
 }
 
@@ -212,9 +215,13 @@ void TSPResult::on_buttDoubleReplacement_clicked()
 {
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;
+    timer.start();
     ui->labelPath2->setText(AlgotythmDoubleReplace(point_distance, start, path_length ));
     //show short path in label '1->2...->1'
+    AlgoTime[1]=timer.nsecsElapsed();
+    ui->labelTime2->setText(QString::number(AlgoTime[1]));
     ui->labelResult2->setText(QString::number(path_length));    //show path length (sum all distance )
+    AlgoLength[1]=path_length;
 }
 
 void TSPResult::Swap(int (&massive_value)[QUANT_POINTS], int i, int j)
@@ -237,16 +244,50 @@ void TSPResult::on_buttTripleReplacement_clicked()
 {
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;
+    timer.start();
     ui->labelPath3->setText(AlgotythmTrippleReplace(point_distance, start, path_length ));
     //show short path in label '1->2...->1'
+    AlgoTime[2]=timer.nsecsElapsed();
+    ui->labelTime3->setText(QString::number(AlgoTime[2]));
     ui->labelResult3->setText(QString::number(path_length));    //show path length (sum all distance )
+    AlgoLength[2]=path_length;
 }
 
 void TSPResult::on_buttFourthReplacement_clicked()
 {
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;
+    timer.start();
     ui->labelPath4->setText(AlgorythmQuadroReplace(point_distance, start, path_length ));
     //show short path in label '1->2...->1'
+    AlgoTime[3]=timer.nsecsElapsed();
+    ui->labelTime4->setText(QString::number(AlgoTime[3]));
     ui->labelResult4->setText(QString::number(path_length));    //show path length (sum all distance )
+    AlgoLength[3]=path_length;
+}
+
+void TSPResult::on_buttAllAlgorythm_clicked()
+{
+    int max=-1;     //max time
+    int max_length=0;     //max length
+    on_buttStartPath_clicked();
+    on_buttDoubleReplacement_clicked();
+    on_buttTripleReplacement_clicked();
+    on_buttFourthReplacement_clicked();
+    for(int i=0;i<4;i++)
+    {
+        if(AlgoTime[i]>max)
+            max=AlgoTime[i];
+        if(AlgoLength[i]>max_length)
+            max_length=AlgoLength[i];
+   }
+    ui->progressStartPathTime->setValue((double)AlgoTime[0]/max*100);
+    ui->progressDoubleReplaceTIme->setValue((double)AlgoTime[1]/max*100);
+    ui->progressTrippleReplaceTime->setValue((double)AlgoTime[2]/max*100);
+    ui->progressQuadroReplaceTime->setValue((double)AlgoTime[3]/max*100);
+
+    ui->progressStartPathAccuracy->setValue(100-(double)AlgoLength[0]/max_length*100);
+    ui->progressDoubleReplaceAccuracy->setValue(100-(double)AlgoLength[1]/max_length*100);
+    ui->progressTrippleReplaceAccuracy->setValue(100-(double)AlgoLength[2]/max_length*100);
+    ui->progressQuadroReplaceAccuracy->setValue(100-(double)AlgoLength[3]/max_length*100);
 }
