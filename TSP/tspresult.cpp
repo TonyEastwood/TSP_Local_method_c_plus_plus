@@ -138,6 +138,55 @@ QString TSPResult::AlgotythmTrippleReplace(double original_massive[QUANT_POINTS]
     return path;        //return path
 }
 
+QString TSPResult::AlgorythmQuadroReplace(double original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+{
+    QString path="";
+    path+=QString::number(start_point)+"->";        //add start point in path
+    double path_length=0;                       //length path
+    int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
+    int result_path[QUANT_POINTS];
+    for(int i=0; i<quantity_points;i++)     //copy massive to changing from Current ShortPath
+        int_path[i]=CurrentShortPath[i];
+    path_length=CalcPathLength(original_massive,int_path);
+    for(int i=1;i<quantity_points-5;i++)
+    {
+    for(int a=i;a<i+5;a++)
+    {
+        Swap(int_path,i,i+4);
+        for(int b=i;b<i+4;b++)
+        {
+           Swap(int_path,i+1,1+b);
+           for(int c=i;c<i+3;c++)
+           {
+               Swap(int_path,i+2,i+3);
+               for(int d=i;d<i+2;d++)
+               {
+                   Swap(int_path,i+3,d+3);
+                   if(path_length>CalcPathLength(original_massive,int_path))
+                   {
+                       path_length=CalcPathLength(original_massive,int_path);
+                       for(int z=0;z<quantity_points;z++)
+                       result_path[z]=int_path[z];
+                   }
+               }
+           }
+        }
+
+
+    }
+    }
+
+
+
+
+    for(int i=1;i<quantity_points;i++)
+        path+=QString::number(result_path[i]+1)+"->";
+    path+=QString::number(start_point);
+
+
+    sum_path=CalcPathLength(original_massive, result_path);    //calc result length path
+    return path;        //return path
+}
 TSPResult::~TSPResult()
 {
     delete ui;
@@ -191,4 +240,13 @@ void TSPResult::on_buttTripleReplacement_clicked()
     ui->labelPath3->setText(AlgotythmTrippleReplace(point_distance, start, path_length ));
     //show short path in label '1->2...->1'
     ui->labelResult3->setText(QString::number(path_length));    //show path length (sum all distance )
+}
+
+void TSPResult::on_buttFourthReplacement_clicked()
+{
+    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
+    double path_length=0;
+    ui->labelPath4->setText(AlgorythmQuadroReplace(point_distance, start, path_length ));
+    //show short path in label '1->2...->1'
+    ui->labelResult4->setText(QString::number(path_length));    //show path length (sum all distance )
 }

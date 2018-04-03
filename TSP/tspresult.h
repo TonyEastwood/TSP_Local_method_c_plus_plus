@@ -17,6 +17,7 @@ public:
     QString AlgorythmStartPath(double [QUANT_POINTS][QUANT_POINTS], int, double &);  //geedy algorythm search start short path
     QString AlgotythmDoubleReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, double replace
     QString AlgotythmTrippleReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, tripple replace
+    QString AlgorythmQuadroReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &);  //algorythm local find, quadro replace
     //Original massive, start position (point that will be start ), and length of path (sum) , type double
     ~TSPResult();
 
@@ -26,6 +27,8 @@ private slots:
     void on_buttDoubleReplacement_clicked();
 
     void on_buttTripleReplacement_clicked();
+
+    void on_buttFourthReplacement_clicked();
 
 private:
     void Swap(int (&)[QUANT_POINTS], int, int);
