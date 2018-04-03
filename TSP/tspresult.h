@@ -25,6 +25,7 @@ private slots:
     void on_buttDoubleReplacement_clicked();
 
 private:
+    void Swap(int (&)[QUANT_POINTS], int, int);
     double CalcPathLength(double [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS]);
     int CurrentShortPath[QUANT_POINTS];                       //massive that contain path like '1 2 6 3 4' that search due to geedy algorythm
     QString ConvertFromPathToQString();                    //convert bool matrix to QString like '1->5->6->3->1' !!!!!!!!!!!!1

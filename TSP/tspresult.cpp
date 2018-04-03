@@ -73,35 +73,30 @@ QString TSPResult::AlgorythmStartPath(double original_massive[QUANT_POINTS][QUAN
 
 QString TSPResult::AlgotythmDoubleReplace(double original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
 {
-    int temp;
     QString path="";
     path+=QString::number(start_point);        //add start point in path
-    double path_length=0;
-    int int_path[QUANT_POINTS-1];               //massive path a[0]->a[1]->a[2]..->a[0]
-    for(int i=0; i<quantity_points;i++)
+    double path_length=0;                       //length path
+    int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
+    for(int i=0; i<quantity_points;i++)     //copy massive to changing from Current ShortPath
         int_path[i]=CurrentShortPath[i];
 
-    for(int i=1;i<quantity_points-1;i++)
+    for(int i=1;i<quantity_points-1;i++)        //replace two points and compare result
     {
-        path_length=CalcPathLength(original_massive, int_path);
-        temp=int_path[i];
-        int_path[i]=int_path[i+1];
-        int_path[i+1]=temp;
-        if (path_length< CalcPathLength(original_massive,int_path))
+        path_length=CalcPathLength(original_massive, int_path);     //calc current length path
+        Swap(int_path, i,i+1 );                     //swap two elements
+        if (path_length< CalcPathLength(original_massive,int_path)) //if begin length > then current
         {
-            temp=int_path[i];
-            int_path[i]=int_path[i+1];
-            int_path[i+1]=temp;
+            Swap(int_path, i,i+1 );                 //revert to start position
         }
-        path+="->"+QString::number(int_path[i]+1);
+        path+="->"+QString::number(int_path[i]+1);      //add points in path result
 
 
 
     }
-    path+="->"+QString::number(int_path[quantity_points-1]+1)+"->"+QString::number(start_point);
-    sum_path=CalcPathLength(original_massive, int_path);
+    path+="->"+QString::number(int_path[quantity_points-1]+1)+"->"+QString::number(start_point);    //add two last point in path
+    sum_path=CalcPathLength(original_massive, int_path);    //calc result length path
 
-    return path;
+    return path;        //return path
 }
 
 TSPResult::~TSPResult()
@@ -132,6 +127,13 @@ void TSPResult::on_buttDoubleReplacement_clicked()
     ui->labelPath2->setText(AlgotythmDoubleReplace(point_distance, start, path_length ));
     //show short path in label '1->2...->1'
     ui->labelResult2->setText(QString::number(path_length));    //show path length (sum all distance )
+}
+
+void TSPResult::Swap(int (&massive_value)[QUANT_POINTS], int i, int j)
+{
+    int temp=massive_value[i];
+    massive_value[i]=massive_value[j];
+    massive_value[j]=temp;
 }
 
 double TSPResult::CalcPathLength(double matrix_distance[QUANT_POINTS][QUANT_POINTS], int Path[QUANT_POINTS])
