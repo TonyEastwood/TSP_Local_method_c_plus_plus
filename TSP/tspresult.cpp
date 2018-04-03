@@ -94,7 +94,8 @@ QString TSPResult::AlgotythmDoubleReplace(double original_massive[QUANT_POINTS][
     }
     path+="->"+QString::number(int_path[quantity_points-1]+1)+"->"+QString::number(start_point);    //add two last point in path
     sum_path=CalcPathLength(original_massive, int_path);    //calc result length path
-
+    ui->radioButton->setChecked(true);
+    ui->radioButton_2->setChecked(false);
     return path;        //return path
 }
 
@@ -195,15 +196,15 @@ TSPResult::~TSPResult()
 void TSPResult::on_buttStartPath_clicked()      //search start path via geedy algorythm
 {
 
-    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
-    double path_length=0;
+    int start = ui->editStartPoint->text().toInt();         //read from edit point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
+    double path_length=0;                                   //path length by geedy algo
     timer.start();
-    ui->labelPathStart->setText(AlgorythmStartPath(point_distance, start, path_length ));
+    ui->labelPathStart->setText(AlgorythmStartPath(point_distance, start, path_length ));   //show path in label and get path_length
     //show short path in label '1->2...->1'
-    AlgoTime[0]=timer.nsecsElapsed();
-        ui->labelTimeStart->setText(QString::number(AlgoTime[0]));
+    AlgoTime[0]=timer.nsecsElapsed();       //calc time that occupied geedy algo
+        ui->labelTimeStart->setText(QString::number(AlgoTime[0]));  //show quantity time that geedy algo occupie
     ui->labelResultStart->setText(QString::number(path_length));    //show path length (sum all distance )
-    AlgoLength[0]=path_length;
+    AlgoLength[0]=path_length;      //path length
 
 }
 
@@ -213,25 +214,27 @@ void TSPResult::on_buttStartPath_clicked()      //search start path via geedy al
 
 void TSPResult::on_buttDoubleReplacement_clicked()
 {
+    on_buttStartPath_clicked();                 //the first of all find short path via greedy algo
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
-    double path_length=0;
-    timer.start();
+    double path_length=0;                           //path length by algo double replace..
+    timer.start();                                              //start timer
     ui->labelPath2->setText(AlgotythmDoubleReplace(point_distance, start, path_length ));
     //show short path in label '1->2...->1'
-    AlgoTime[1]=timer.nsecsElapsed();
-    ui->labelTime2->setText(QString::number(AlgoTime[1]));
+    AlgoTime[1]=timer.nsecsElapsed();                           //stop timer
+    ui->labelTime2->setText(QString::number(AlgoTime[1]));      //show time that double replace algo occupie
     ui->labelResult2->setText(QString::number(path_length));    //show path length (sum all distance )
-    AlgoLength[1]=path_length;
+    AlgoLength[1]=path_length;                          //path length by algo double replace
 }
 
-void TSPResult::Swap(int (&massive_value)[QUANT_POINTS], int i, int j)
+void TSPResult::Swap(int (&massive_value)[QUANT_POINTS], int i, int j)      //swap two elements with index i and j in massive massive_value
 {
-    int temp=massive_value[i];
+    int temp=massive_value[i];                      //buffer for swap
     massive_value[i]=massive_value[j];
     massive_value[j]=temp;
 }
 
 double TSPResult::CalcPathLength(double matrix_distance[QUANT_POINTS][QUANT_POINTS], int Path[QUANT_POINTS])
+//calc length in massive Path where matrix_distance - matrix with distance between points
 {
     int sum=0;              // path length
     for(int i=0;i<quantity_points-1;i++)
@@ -242,38 +245,48 @@ double TSPResult::CalcPathLength(double matrix_distance[QUANT_POINTS][QUANT_POIN
 
 void TSPResult::on_buttTripleReplacement_clicked()
 {
+     on_buttStartPath_clicked();                 //the first of all find short path via greedy algo
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
-    double path_length=0;
-    timer.start();
-    ui->labelPath3->setText(AlgotythmTrippleReplace(point_distance, start, path_length ));
+    double path_length=0;                                    //length path by tripple replace algo
+    timer.start();                                          //timer start
+    ui->labelPath3->setText(AlgotythmTrippleReplace(point_distance, start, path_length ));  //show path by tripple replace algo
     //show short path in label '1->2...->1'
-    AlgoTime[2]=timer.nsecsElapsed();
-    ui->labelTime3->setText(QString::number(AlgoTime[2]));
+    AlgoTime[2]=timer.nsecsElapsed();               //stop timer
+    ui->labelTime3->setText(QString::number(AlgoTime[2]));          //show timer that tripple replace algo occupie
     ui->labelResult3->setText(QString::number(path_length));    //show path length (sum all distance )
-    AlgoLength[2]=path_length;
+    AlgoLength[2]=path_length;                                  //length path
 }
 
 void TSPResult::on_buttFourthReplacement_clicked()
 {
+     on_buttStartPath_clicked();                 //the first of all find short path via greedy algo
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
-    double path_length=0;
-    timer.start();
-    ui->labelPath4->setText(AlgorythmQuadroReplace(point_distance, start, path_length ));
+    double path_length=0;                                        //length path
+    timer.start();                                              //start timer
+    ui->labelPath4->setText(AlgorythmQuadroReplace(point_distance, start, path_length ));   //show short path as result Quadro replace algo
     //show short path in label '1->2...->1'
-    AlgoTime[3]=timer.nsecsElapsed();
-    ui->labelTime4->setText(QString::number(AlgoTime[3]));
+    AlgoTime[3]=timer.nsecsElapsed();               //stop timer
+    ui->labelTime4->setText(QString::number(AlgoTime[3]));      //show time that algo occupie
     ui->labelResult4->setText(QString::number(path_length));    //show path length (sum all distance )
-    AlgoLength[3]=path_length;
+    AlgoLength[3]=path_length;                          //length path
 }
 
 void TSPResult::on_buttAllAlgorythm_clicked()
 {
-    int max=-1;     //max time
-    int max_length=0;     //max length
-    on_buttStartPath_clicked();
-    on_buttDoubleReplacement_clicked();
-    on_buttTripleReplacement_clicked();
-    on_buttFourthReplacement_clicked();
+
+    on_buttStartPath_clicked();                 //show result via greedy algo
+    on_buttDoubleReplacement_clicked();     //show result via double replace
+    on_buttTripleReplacement_clicked();     //show result via tripple replace
+    on_buttFourthReplacement_clicked();     //show result via fourth replace
+
+    SetProgressBar();                   //set all value in progress bar
+
+}
+
+void TSPResult::SetProgressBar()
+{
+    int max=-1;                       //max time
+    int max_length=0;                //max length
     for(int i=0;i<4;i++)
     {
         if(AlgoTime[i]>max)
@@ -290,4 +303,16 @@ void TSPResult::on_buttAllAlgorythm_clicked()
     ui->progressDoubleReplaceAccuracy->setValue(100-(double)AlgoLength[1]/max_length*100);
     ui->progressTrippleReplaceAccuracy->setValue(100-(double)AlgoLength[2]/max_length*100);
     ui->progressQuadroReplaceAccuracy->setValue(100-(double)AlgoLength[3]/max_length*100);
+}
+
+void TSPResult::on_radioButton_clicked()        //check matrix from file
+{
+    ui->radioButton->setChecked(true);
+    ui->radioButton_2->setChecked(false);
+}
+
+void TSPResult::on_radioButton_2_clicked()      //check matrix from random generate
+{
+    ui->radioButton_2->setChecked(true);
+    ui->radioButton->setChecked(false);
 }

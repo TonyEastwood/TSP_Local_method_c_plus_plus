@@ -18,6 +18,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -57,12 +58,17 @@ public:
     QProgressBar *progressDoubleReplaceTIme;
     QLabel *label_Time;
     QLabel *label_accuracy;
+    QPushButton *buttAnalyze;
+    QPushButton *buttShowMatrixTable;
+    QPushButton *buttRandomGenerate;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
 
     void setupUi(QWidget *TSPResult)
     {
         if (TSPResult->objectName().isEmpty())
             TSPResult->setObjectName(QStringLiteral("TSPResult"));
-        TSPResult->resize(901, 450);
+        TSPResult->resize(950, 512);
         buttStartPath = new QPushButton(TSPResult);
         buttStartPath->setObjectName(QStringLiteral("buttStartPath"));
         buttStartPath->setGeometry(QRect(30, 80, 151, 25));
@@ -128,7 +134,7 @@ public:
         editStartPoint->setGeometry(QRect(50, 400, 113, 25));
         buttAllAlgorythm = new QPushButton(TSPResult);
         buttAllAlgorythm->setObjectName(QStringLiteral("buttAllAlgorythm"));
-        buttAllAlgorythm->setGeometry(QRect(420, 410, 89, 25));
+        buttAllAlgorythm->setGeometry(QRect(20, 440, 171, 51));
         progressStartPathAccuracy = new QProgressBar(TSPResult);
         progressStartPathAccuracy->setObjectName(QStringLiteral("progressStartPathAccuracy"));
         progressStartPathAccuracy->setGeometry(QRect(590, 80, 118, 23));
@@ -141,7 +147,7 @@ public:
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressStartPathAccuracy->setPalette(palette);
-        progressStartPathAccuracy->setValue(24);
+        progressStartPathAccuracy->setValue(0);
         progressDoubleReplaceAccuracy = new QProgressBar(TSPResult);
         progressDoubleReplaceAccuracy->setObjectName(QStringLiteral("progressDoubleReplaceAccuracy"));
         progressDoubleReplaceAccuracy->setGeometry(QRect(580, 120, 118, 23));
@@ -150,7 +156,7 @@ public:
         palette1.setBrush(QPalette::Inactive, QPalette::Highlight, brush);
         palette1.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressDoubleReplaceAccuracy->setPalette(palette1);
-        progressDoubleReplaceAccuracy->setValue(24);
+        progressDoubleReplaceAccuracy->setValue(0);
         progressTrippleReplaceAccuracy = new QProgressBar(TSPResult);
         progressTrippleReplaceAccuracy->setObjectName(QStringLiteral("progressTrippleReplaceAccuracy"));
         progressTrippleReplaceAccuracy->setGeometry(QRect(560, 200, 118, 23));
@@ -159,7 +165,7 @@ public:
         palette2.setBrush(QPalette::Inactive, QPalette::Highlight, brush);
         palette2.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressTrippleReplaceAccuracy->setPalette(palette2);
-        progressTrippleReplaceAccuracy->setValue(24);
+        progressTrippleReplaceAccuracy->setValue(0);
         progressQuadroReplaceAccuracy = new QProgressBar(TSPResult);
         progressQuadroReplaceAccuracy->setObjectName(QStringLiteral("progressQuadroReplaceAccuracy"));
         progressQuadroReplaceAccuracy->setGeometry(QRect(590, 290, 118, 23));
@@ -168,7 +174,7 @@ public:
         palette3.setBrush(QPalette::Inactive, QPalette::Highlight, brush);
         palette3.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressQuadroReplaceAccuracy->setPalette(palette3);
-        progressQuadroReplaceAccuracy->setValue(24);
+        progressQuadroReplaceAccuracy->setValue(0);
         progressStartPathTime = new QProgressBar(TSPResult);
         progressStartPathTime->setObjectName(QStringLiteral("progressStartPathTime"));
         progressStartPathTime->setGeometry(QRect(750, 80, 118, 23));
@@ -180,7 +186,7 @@ public:
         palette4.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressStartPathTime->setPalette(palette4);
         progressStartPathTime->setAutoFillBackground(false);
-        progressStartPathTime->setValue(24);
+        progressStartPathTime->setValue(0);
         progressTrippleReplaceTime = new QProgressBar(TSPResult);
         progressTrippleReplaceTime->setObjectName(QStringLiteral("progressTrippleReplaceTime"));
         progressTrippleReplaceTime->setGeometry(QRect(720, 200, 118, 23));
@@ -190,7 +196,7 @@ public:
         palette5.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressTrippleReplaceTime->setPalette(palette5);
         progressTrippleReplaceTime->setAutoFillBackground(false);
-        progressTrippleReplaceTime->setValue(24);
+        progressTrippleReplaceTime->setValue(0);
         progressQuadroReplaceTime = new QProgressBar(TSPResult);
         progressQuadroReplaceTime->setObjectName(QStringLiteral("progressQuadroReplaceTime"));
         progressQuadroReplaceTime->setGeometry(QRect(750, 290, 118, 23));
@@ -200,7 +206,7 @@ public:
         palette6.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressQuadroReplaceTime->setPalette(palette6);
         progressQuadroReplaceTime->setAutoFillBackground(false);
-        progressQuadroReplaceTime->setValue(24);
+        progressQuadroReplaceTime->setValue(0);
         progressDoubleReplaceTIme = new QProgressBar(TSPResult);
         progressDoubleReplaceTIme->setObjectName(QStringLiteral("progressDoubleReplaceTIme"));
         progressDoubleReplaceTIme->setGeometry(QRect(740, 120, 118, 23));
@@ -210,13 +216,29 @@ public:
         palette7.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         progressDoubleReplaceTIme->setPalette(palette7);
         progressDoubleReplaceTIme->setAutoFillBackground(false);
-        progressDoubleReplaceTIme->setValue(24);
+        progressDoubleReplaceTIme->setValue(0);
         label_Time = new QLabel(TSPResult);
         label_Time->setObjectName(QStringLiteral("label_Time"));
         label_Time->setGeometry(QRect(780, 30, 67, 17));
         label_accuracy = new QLabel(TSPResult);
         label_accuracy->setObjectName(QStringLiteral("label_accuracy"));
         label_accuracy->setGeometry(QRect(610, 30, 67, 17));
+        buttAnalyze = new QPushButton(TSPResult);
+        buttAnalyze->setObjectName(QStringLiteral("buttAnalyze"));
+        buttAnalyze->setGeometry(QRect(680, 360, 171, 51));
+        buttShowMatrixTable = new QPushButton(TSPResult);
+        buttShowMatrixTable->setObjectName(QStringLiteral("buttShowMatrixTable"));
+        buttShowMatrixTable->setGeometry(QRect(670, 450, 221, 41));
+        buttRandomGenerate = new QPushButton(TSPResult);
+        buttRandomGenerate->setObjectName(QStringLiteral("buttRandomGenerate"));
+        buttRandomGenerate->setGeometry(QRect(310, 370, 201, 51));
+        radioButton = new QRadioButton(TSPResult);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(360, 440, 141, 23));
+        radioButton->setChecked(true);
+        radioButton_2 = new QRadioButton(TSPResult);
+        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setGeometry(QRect(360, 470, 211, 23));
 
         retranslateUi(TSPResult);
 
@@ -246,9 +268,14 @@ public:
         labelPath3->setText(QApplication::translate("TSPResult", "TextLabel", nullptr));
         labelPath4->setText(QApplication::translate("TSPResult", "TextLabel", nullptr));
         labelStartPoint->setText(QApplication::translate("TSPResult", "Start Point", nullptr));
-        buttAllAlgorythm->setText(QApplication::translate("TSPResult", "PushButton", nullptr));
+        buttAllAlgorythm->setText(QApplication::translate("TSPResult", "Find All Value", nullptr));
         label_Time->setText(QApplication::translate("TSPResult", "Time", nullptr));
-        label_accuracy->setText(QApplication::translate("TSPResult", "Accuracy", nullptr));
+        label_accuracy->setText(QApplication::translate("TSPResult", "Efficiency", nullptr));
+        buttAnalyze->setText(QApplication::translate("TSPResult", "Full analyze result", nullptr));
+        buttShowMatrixTable->setText(QApplication::translate("TSPResult", "Show current matrix distance", nullptr));
+        buttRandomGenerate->setText(QApplication::translate("TSPResult", "Configure random generate", nullptr));
+        radioButton->setText(QApplication::translate("TSPResult", "Matrix from file", nullptr));
+        radioButton_2->setText(QApplication::translate("TSPResult", "Random generated matrix", nullptr));
     } // retranslateUi
 
 };

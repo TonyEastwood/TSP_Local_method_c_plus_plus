@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>901</width>
-    <height>450</height>
+    <width>950</width>
+    <height>512</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -286,10 +286,10 @@
   <widget class="QPushButton" name="buttAllAlgorythm">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>410</y>
-     <width>89</width>
-     <height>25</height>
+     <x>20</x>
+     <y>440</y>
+     <width>171</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -343,7 +343,7 @@
     </palette>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressDoubleReplaceAccuracy">
@@ -393,7 +393,7 @@
     </palette>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressTrippleReplaceAccuracy">
@@ -443,7 +443,7 @@
     </palette>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressQuadroReplaceAccuracy">
@@ -493,7 +493,7 @@
     </palette>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressStartPathTime">
@@ -546,7 +546,7 @@
     <bool>false</bool>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressTrippleReplaceTime">
@@ -599,7 +599,7 @@
     <bool>false</bool>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressQuadroReplaceTime">
@@ -652,7 +652,7 @@
     <bool>false</bool>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressDoubleReplaceTIme">
@@ -705,7 +705,7 @@
     <bool>false</bool>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_Time">
@@ -732,6 +732,74 @@
    </property>
    <property name="text">
     <string>Efficiency</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttAnalyze">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>360</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Full analyze result</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttShowMatrixTable">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>450</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Show current matrix distance</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttRandomGenerate">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>370</y>
+     <width>201</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Configure random generate</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>440</y>
+     <width>141</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Matrix from file</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_2">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>470</y>
+     <width>211</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Random generated matrix</string>
    </property>
   </widget>
  </widget>

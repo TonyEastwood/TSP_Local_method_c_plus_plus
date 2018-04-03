@@ -33,14 +33,21 @@ private slots:
 
     void on_buttAllAlgorythm_clicked();
 
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
 private:
+    void SetProgressBar();          //set value for all progress bar
     int AlgoTime[4];
     double AlgoLength[4];
     QElapsedTimer timer;
     void Swap(int (&)[QUANT_POINTS], int, int);
     double CalcPathLength(double [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS]);
     int CurrentShortPath[QUANT_POINTS];                       //massive that contain path like '1 2 6 3 4' that search due to geedy algoryth
-    double point_distance[QUANT_POINTS][QUANT_POINTS];    //matrix distance between points
+    double point_distance[QUANT_POINTS][QUANT_POINTS];    //matrix distance between points (from file)
+    double point_distance_random[QUANT_POINTS][QUANT_POINTS];   //matrix distance between points (random generate)
+
     int quantity_points;                                   //quantity points in matrix
      void InitialInvolvePoints(bool (&)[QUANT_POINTS], int);     //set all value 'false'
     Ui::TSPResult *ui;
