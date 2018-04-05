@@ -26,15 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         widget.cpp \
-    tspresult.cpp \
-    configurerandomgenerate.cpp
+    tspresult.cpp
 
 HEADERS += \
         widget.h \
-    tspresult.h \
-    configurerandomgenerate.h
+    tspresult.h
 
 FORMS += \
         widget.ui \
-    tspresult.ui \
-    configurerandomgenerate.ui
+    tspresult.ui

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>950</width>
-    <height>512</height>
+    <width>985</width>
+    <height>593</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -737,8 +737,8 @@
   <widget class="QPushButton" name="buttAnalyze">
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>360</y>
+     <x>370</x>
+     <y>370</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -747,24 +747,11 @@
     <string>Full analyze result</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="buttShowMatrixTable">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>450</y>
-     <width>221</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Show current matrix distance</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="buttRandomGenerate">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>370</y>
+     <x>680</x>
+     <y>450</y>
      <width>201</width>
      <height>51</height>
     </rect>

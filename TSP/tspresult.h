@@ -37,7 +37,10 @@ private slots:
 
     void on_radioButton_2_clicked();
 
+    void on_buttRandomGenerate_clicked();
+
 private:
+    //ConfigureRandomGenerate *ConfigureForm;
     void SetProgressBar();          //set value for all progress bar
     int AlgoTime[4];
     double AlgoLength[4];

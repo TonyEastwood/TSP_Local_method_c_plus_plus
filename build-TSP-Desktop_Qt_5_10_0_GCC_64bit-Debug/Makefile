@@ -745,6 +745,9 @@ moc_widget.cpp: ../../../../Qt/5.10.0/gcc_64/include/QtCore/QFile \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qdialog.h \
+		../TSP/tspresult.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../TSP/widget.h \
 		moc_predefs.h \
 		../../../../Qt/5.10.0/gcc_64/bin/moc
@@ -853,6 +856,8 @@ moc_tspresult.cpp: ../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../TSP/tspresult.h \
 		moc_predefs.h \
 		../../../../Qt/5.10.0/gcc_64/bin/moc
@@ -996,6 +1001,9 @@ main.o: ../TSP/main.cpp ../TSP/widget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qdialog.h \
+		../TSP/tspresult.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1118,6 +1126,9 @@ widget.o: ../TSP/widget.cpp ../TSP/widget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qdialog.h \
+		../TSP/tspresult.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		ui_widget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QVariant \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QAction \
@@ -1268,7 +1279,56 @@ tspresult.o: ../TSP/tspresult.cpp ../TSP/tspresult.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_tspresult.h
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		ui_tspresult.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QAction \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qaction.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QProgressBar \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qprogressbar.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QRadioButton \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qradiobutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tspresult.o ../TSP/tspresult.cpp
 
 moc_widget.o: moc_widget.cpp 

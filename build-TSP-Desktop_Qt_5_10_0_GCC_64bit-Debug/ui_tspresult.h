@@ -59,7 +59,6 @@ public:
     QLabel *label_Time;
     QLabel *label_accuracy;
     QPushButton *buttAnalyze;
-    QPushButton *buttShowMatrixTable;
     QPushButton *buttRandomGenerate;
     QRadioButton *radioButton;
     QRadioButton *radioButton_2;
@@ -68,7 +67,7 @@ public:
     {
         if (TSPResult->objectName().isEmpty())
             TSPResult->setObjectName(QStringLiteral("TSPResult"));
-        TSPResult->resize(950, 512);
+        TSPResult->resize(985, 593);
         buttStartPath = new QPushButton(TSPResult);
         buttStartPath->setObjectName(QStringLiteral("buttStartPath"));
         buttStartPath->setGeometry(QRect(30, 80, 151, 25));
@@ -225,13 +224,10 @@ public:
         label_accuracy->setGeometry(QRect(610, 30, 67, 17));
         buttAnalyze = new QPushButton(TSPResult);
         buttAnalyze->setObjectName(QStringLiteral("buttAnalyze"));
-        buttAnalyze->setGeometry(QRect(680, 360, 171, 51));
-        buttShowMatrixTable = new QPushButton(TSPResult);
-        buttShowMatrixTable->setObjectName(QStringLiteral("buttShowMatrixTable"));
-        buttShowMatrixTable->setGeometry(QRect(670, 450, 221, 41));
+        buttAnalyze->setGeometry(QRect(370, 370, 171, 51));
         buttRandomGenerate = new QPushButton(TSPResult);
         buttRandomGenerate->setObjectName(QStringLiteral("buttRandomGenerate"));
-        buttRandomGenerate->setGeometry(QRect(310, 370, 201, 51));
+        buttRandomGenerate->setGeometry(QRect(680, 450, 201, 51));
         radioButton = new QRadioButton(TSPResult);
         radioButton->setObjectName(QStringLiteral("radioButton"));
         radioButton->setGeometry(QRect(360, 440, 141, 23));
@@ -272,7 +268,6 @@ public:
         label_Time->setText(QApplication::translate("TSPResult", "Time", nullptr));
         label_accuracy->setText(QApplication::translate("TSPResult", "Efficiency", nullptr));
         buttAnalyze->setText(QApplication::translate("TSPResult", "Full analyze result", nullptr));
-        buttShowMatrixTable->setText(QApplication::translate("TSPResult", "Show current matrix distance", nullptr));
         buttRandomGenerate->setText(QApplication::translate("TSPResult", "Configure random generate", nullptr));
         radioButton->setText(QApplication::translate("TSPResult", "Matrix from file", nullptr));
         radioButton_2->setText(QApplication::translate("TSPResult", "Random generated matrix", nullptr));

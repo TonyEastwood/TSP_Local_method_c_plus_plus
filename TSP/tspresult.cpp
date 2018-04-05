@@ -94,8 +94,7 @@ QString TSPResult::AlgotythmDoubleReplace(double original_massive[QUANT_POINTS][
     }
     path+="->"+QString::number(int_path[quantity_points-1]+1)+"->"+QString::number(start_point);    //add two last point in path
     sum_path=CalcPathLength(original_massive, int_path);    //calc result length path
-    ui->radioButton->setChecked(true);
-    ui->radioButton_2->setChecked(false);
+
     return path;        //return path
 }
 
@@ -315,4 +314,9 @@ void TSPResult::on_radioButton_2_clicked()      //check matrix from random gener
 {
     ui->radioButton_2->setChecked(true);
     ui->radioButton->setChecked(false);
+}
+
+void TSPResult::on_buttRandomGenerate_clicked()
+{
+
 }
