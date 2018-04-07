@@ -13,14 +13,14 @@ Widget::~Widget()
     delete ui;
 }
 
-void Widget::AssignStartValue(double (&distance_matrix)[QUANT_POINTS][QUANT_POINTS] )   //initialize matrix of distance
+void Widget::AssignStartValue(int (&distance_matrix)[QUANT_POINTS][QUANT_POINTS] )   //initialize matrix of distance
 {
     for(int i=0;i<QUANT_POINTS;i++)
         for(int j=0;j<QUANT_POINTS;j++)
             distance_matrix[i][j]=_INFINITY;
 }
 
-void Widget::AssignValueFromFile(double (&point_distance)[QUANT_POINTS][QUANT_POINTS], QFile & file)
+void Widget::AssignValueFromFile(int (&point_distance)[QUANT_POINTS][QUANT_POINTS], QFile & file)
 {
      QStringList query;                             //for split line and write it on this QString list
     while(!file.atEnd())       //until the end of the file
@@ -47,7 +47,7 @@ void Widget::Error_FileNonExistent(QString path)    //error if file non exist
        Msgbox.setText("Copy your file '"+path+"' in current directory");
        Msgbox.exec();
 }
-void Widget::ShowDataTableFromFile(int quantity_points, double matrix_distance[][QUANT_POINTS])      //show matrix distance in table view
+void Widget::ShowDataTableFromFile(int quantity_points, int matrix_distance[][QUANT_POINTS])      //show matrix distance in table view
 {
     QStringList horizHeader;
     for(int i=0;i<quantity_points;i++)                  //add all column
@@ -88,7 +88,7 @@ void Widget::on_pushButton_clicked()
 
 
     int quantity_points=QString(lFile.readLine()).toInt();     //quantity points read from first line of file
-    double point_distance[QUANT_POINTS][QUANT_POINTS]={_INFINITY};    //matrix distance between points
+    int point_distance[QUANT_POINTS][QUANT_POINTS]={_INFINITY};    //matrix distance between points
     AssignStartValue(point_distance);                   //set start value (infinity for each cell)
     AssignValueFromFile(point_distance, lFile);         //set value for each cell from file
     lFile.close();                              //close file

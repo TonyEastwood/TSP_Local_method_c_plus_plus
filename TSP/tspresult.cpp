@@ -14,7 +14,7 @@ void TSPResult::InitialInvolvePoints(bool (&involve_points)[QUANT_POINTS], int _
         involve_points[i]=false;
 }
 
-TSPResult::TSPResult(double (&_matrix_distance)[QUANT_POINTS][QUANT_POINTS], int _quantity_points): //Constructor with parametres
+TSPResult::TSPResult(int (&_matrix_distance)[QUANT_POINTS][QUANT_POINTS], int _quantity_points): //Constructor with parametres
     QWidget(0),
     ui(new Ui::TSPResult)
 {
@@ -29,7 +29,7 @@ TSPResult::TSPResult(double (&_matrix_distance)[QUANT_POINTS][QUANT_POINTS], int
 
 }
 
-QString TSPResult::AlgorythmStartPath(double original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
  //geedy algorythm search start short path
 {
 
@@ -71,7 +71,7 @@ QString TSPResult::AlgorythmStartPath(double original_massive[QUANT_POINTS][QUAN
         return path;            //return path '1->3->5->1'
 }
 
-QString TSPResult::AlgotythmDoubleReplace(double original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgotythmDoubleReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
 {
     QString path="";
     path+=QString::number(start_point);        //add start point in path
@@ -98,7 +98,7 @@ QString TSPResult::AlgotythmDoubleReplace(double original_massive[QUANT_POINTS][
     return path;        //return path
 }
 
-QString TSPResult::AlgotythmTrippleReplace(double original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
 {
     QString path="";
     path+=QString::number(start_point);        //add start point in path
@@ -137,7 +137,7 @@ QString TSPResult::AlgotythmTrippleReplace(double original_massive[QUANT_POINTS]
     return path;        //return path
 }
 
-QString TSPResult::AlgorythmQuadroReplace(double original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
 {
     QString path="";
     path+=QString::number(start_point)+"->";        //add start point in path
@@ -232,7 +232,7 @@ void TSPResult::Swap(int (&massive_value)[QUANT_POINTS], int i, int j)      //sw
     massive_value[j]=temp;
 }
 
-double TSPResult::CalcPathLength(double matrix_distance[QUANT_POINTS][QUANT_POINTS], int Path[QUANT_POINTS])
+double TSPResult::CalcPathLength(int matrix_distance[QUANT_POINTS][QUANT_POINTS], int Path[QUANT_POINTS])
 //calc length in massive Path where matrix_distance - matrix with distance between points
 {
     int sum=0;              // path length
@@ -318,27 +318,42 @@ void TSPResult::on_radioButton_2_clicked()      //check matrix from random gener
 
 void TSPResult::on_buttRandomGenerate_clicked()
 {
-    int T[_GRAPH_SCALE];            //average time on each interval of N in percent
-    int A[_GRAPH_SCALE];            //average accuracy on each interval of N in percent
+    int T[4][_GRAPH_SCALE];            //average time on each interval of N in percent
+    int A[4][_GRAPH_SCALE];            //average accuracy on each interval of N in percent
     int quant_from=0;               //quantity points on first step
     int quant_to=0;                 //quantity points on last step
     int quant_step=0;               //step that increase from quant_from to quant_to
     int length_from =0;             //interval random length from length_from
     int length_to = 0;              //to length_to
     int quant_cycle=0;              //quantity cycle on each N
+    int start_point=0;
+    int matrix_distance[QUANT_POINTS][QUANT_POINTS];
+    ReadFromEditForRandom(quant_from,quant_to,quant_step,length_from,length_to,quant_cycle, start_point);    //read data from edit and
+    //write it to variables
+    for(int i=quant_from;i<=quant_to;i+=quant_step)
+    {
+        for(int j=0;j<quant_cycle;j++)
+        {
 
+            //generate data with quantity point i, distance from length_from to length_to
+            //find time and acuracy
+        }
+    }
 
 
 }
 
 
 
-void TSPResult::ReadFromEditForRandom(int *, int *, int *, int *, int *, int *)
+void TSPResult::ReadFromEditForRandom(int &q_from, int &q_to, int &q_step, int &l_from, int &l_to, int &q_cycle, int &s_point)
 {
-    /*   int quant_from=0;               //quantity points on first step
-       int quant_to=0;                 //quantity points on last step
-       int quant_step=0;               //step that increase from quant_from to quant_to
-       int length_from =0;             //interval random length from length_from
-       int length_to = 0;              //to length_to
-       int quant_cycle=0;              //quantity cycle on each N*/
+    q_from=ui->editPointFrom->text().toInt();
+    q_to=ui->editPointTo->text().toInt();
+    q_step=ui->editPointStep->text().toInt();
+    l_from=ui->editLengthFrom->text().toInt();
+    l_to=ui->editLengthTo->text().toInt();
+    q_cycle=ui->editQuantCycle->text().toInt();
+    s_point= ui->editStartPoint->text().toInt();
+
+
 }

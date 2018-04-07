@@ -15,11 +15,11 @@ class TSPResult : public QWidget
 
 public:
     explicit TSPResult(QWidget *parent = 0);
-    TSPResult(double (&)[QUANT_POINTS][QUANT_POINTS], int );            //constructor with parameters
-    QString AlgorythmStartPath(double [QUANT_POINTS][QUANT_POINTS], int, double &);  //geedy algorythm search start short path
-    QString AlgotythmDoubleReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, double replace
-    QString AlgotythmTrippleReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, tripple replace
-    QString AlgorythmQuadroReplace(double [QUANT_POINTS][QUANT_POINTS], int, double &);  //algorythm local find, quadro replace
+    TSPResult(int (&)[QUANT_POINTS][QUANT_POINTS], int );            //constructor with parameters
+    QString AlgorythmStartPath(int [QUANT_POINTS][QUANT_POINTS], int, double &);  //geedy algorythm search start short path
+    QString AlgotythmDoubleReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, double replace
+    QString AlgotythmTrippleReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, tripple replace
+    QString AlgorythmQuadroReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &);  //algorythm local find, quadro replace
     //Original massive, start position (point that will be start ), and length of path (sum) , type double
     ~TSPResult();
 
@@ -43,16 +43,16 @@ private slots:
   //  void on_buttAnalyze_clicked();
 
 private:
-    void ReadFromEditForRandom(int *, int*, int*, int*, int*, int*);
+    void ReadFromEditForRandom(int &, int&, int&, int&, int&, int&, int&);
     void SetProgressBar();          //set value for all progress bar
     int AlgoTime[4];
     double AlgoLength[4];
     QElapsedTimer timer;
     void Swap(int (&)[QUANT_POINTS], int, int);
-    double CalcPathLength(double [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS]);
+    double CalcPathLength(int [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS]);
     int CurrentShortPath[QUANT_POINTS];                       //massive that contain path like '1 2 6 3 4' that search due to geedy algoryth
-    double point_distance[QUANT_POINTS][QUANT_POINTS];    //matrix distance between points (from file)
-    double point_distance_random[QUANT_POINTS][QUANT_POINTS];   //matrix distance between points (random generate)
+    int point_distance[QUANT_POINTS][QUANT_POINTS];    //matrix distance between points (from file)
+   // int point_distance_random[QUANT_POINTS][QUANT_POINTS];   //matrix distance between points (random generate)
 
     int quantity_points;                                   //quantity points in matrix
      void InitialInvolvePoints(bool (&)[QUANT_POINTS], int);     //set all value 'false'

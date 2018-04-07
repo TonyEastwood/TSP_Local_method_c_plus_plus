@@ -22,7 +22,7 @@ public:
     QStandardItem *item;
 
 
-    void ShowDataTableFromFile(int, double matrix_distance[][QUANT_POINTS]);        //show matrix distance on tableview
+    void ShowDataTableFromFile(int, int matrix_distance[][QUANT_POINTS]);        //show matrix distance on tableview
     void Error_FileNonExistent(QString);                                            //show error that file name that user write not found
     void Error_CantOpenFile(QString);                       //show error that we don't have access rights for open file on read
     void OpenTspResultForm();
@@ -36,8 +36,8 @@ private slots:
 
 private:
     TSPResult *tspform;                //open new form TSPResult
-    void AssignStartValue( double (&)[QUANT_POINTS][QUANT_POINTS]);         //initialize start value for distance matrix
-    void AssignValueFromFile (double (&)[QUANT_POINTS][QUANT_POINTS], QFile &);
+    void AssignStartValue( int (&)[QUANT_POINTS][QUANT_POINTS]);         //initialize start value for distance matrix
+    void AssignValueFromFile (int (&)[QUANT_POINTS][QUANT_POINTS], QFile &);
     Ui::Widget *ui;
 };
 
