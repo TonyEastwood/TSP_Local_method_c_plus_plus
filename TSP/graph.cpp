@@ -27,6 +27,18 @@ Graph::~Graph()
     delete ui;
 }
 
+double Graph::MaxValue(double T[4][_GRAPH_SCALE])
+{
+    int max=0;
+    for(int j=0;j<4;j++)
+    {
+    for(int i=0;i<_GRAPH_SCALE;i++)
+        if(T[j][i]>max)
+            max=T[j][i];
+    }
+    return max;
+}
+
 void Graph::DrawGraph(double A[4][_GRAPH_SCALE], double T[4][_GRAPH_SCALE], int p_from, int p_to, int p_step)
 {
     double a = p_from; //Начало интервала, где рисуем график по оси Ox
@@ -62,7 +74,7 @@ void Graph::DrawGraph(double A[4][_GRAPH_SCALE], double T[4][_GRAPH_SCALE], int 
 
     //Подписываем оси Ox и Oy
     ui->widget->xAxis->setLabel("N");
-    ui->widget->yAxis->setLabel("A");
+    ui->widget->yAxis->setLabel("A, %");
 
     //Установим область, которая будет показываться на графике
     ui->widget->xAxis->setRange(a, b);//Для оси Ox
@@ -71,7 +83,7 @@ void Graph::DrawGraph(double A[4][_GRAPH_SCALE], double T[4][_GRAPH_SCALE], int 
     //вычислить минимальное и максимальное значение в векторах
 
 
-    ui->widget->yAxis->setRange(0, 100);//Для оси Oy
+    ui->widget->yAxis->setRange(0, MaxValue(A)+5);//Для оси Oy
 
     //И перерисуем график на нашем widget
     ui->widget->replot();
@@ -102,7 +114,7 @@ void Graph::DrawGraph(double A[4][_GRAPH_SCALE], double T[4][_GRAPH_SCALE], int 
 
     //Подписываем оси Ox и Oy
     ui->widget_2->xAxis->setLabel("N");
-    ui->widget_2->yAxis->setLabel("T");
+    ui->widget_2->yAxis->setLabel("T, %");
 
     //Установим область, которая будет показываться на графике
     ui->widget_2->xAxis->setRange(a, b);//Для оси Ox

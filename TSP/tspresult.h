@@ -1,6 +1,6 @@
 #ifndef TSPRESULT_H
 #define TSPRESULT_H
-#define QUANT_POINTS 30            //max quantity of points that file can involve   (if points so many, app can crash )
+#define QUANT_POINTS 100            //max quantity of points that file can involve   (if points so many, app can crash )
 #define _INFINITY  1000000          //max distance between points
 #define _GRAPH_SCALE 100
 #include <QWidget>

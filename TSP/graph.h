@@ -18,6 +18,7 @@ public:
     ~Graph();
 
 private:
+    double MaxValue(double [4][_GRAPH_SCALE]);
     void DrawGraph(double [4][_GRAPH_SCALE], double[4][_GRAPH_SCALE],int, int,int);
     Ui::Graph *ui;
 };
