@@ -29,13 +29,13 @@ TSPResult::TSPResult(int (&_matrix_distance)[QUANT_POINTS][QUANT_POINTS], int _q
 
 }
 
-QString TSPResult::AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path, int q_points)
  //geedy algorythm search start short path
 {
 
         sum_path=0;                                     //start sum =0
         bool InvolvedPoints[QUANT_POINTS];                      //all points that we visit
-        InitialInvolvePoints(InvolvedPoints, quantity_points);                   //set all value of massive eque to 'false'
+        InitialInvolvePoints(InvolvedPoints, q_points);                   //set all value of massive eque to 'false'
         InvolvedPoints[start_point-1]=true;         //start point = true
         CurrentShortPath[0]=start_point-1;
 
@@ -49,7 +49,7 @@ QString TSPResult::AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_P
         {
             int i=index;
             min_distance=_INFINITY;
-            for(int j=0;j<quantity_points;j++)              //find min path and check point as visited
+            for(int j=0;j<q_points;j++)              //find min path and check point as visited
             {
                 if(original_massive[i][j]<min_distance && InvolvedPoints[j]==false) //if path = min and point not visited
                 {
@@ -71,15 +71,15 @@ QString TSPResult::AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_P
         return path;            //return path '1->3->5->1'
 }
 
-QString TSPResult::AlgotythmDoubleReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgotythmDoubleReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path, int q_point)
 {
     QString path="";
     path+=QString::number(start_point);        //add start point in path
     double path_length=0;                       //length path
     int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
-    for(int i=0; i<quantity_points;i++)     //copy massive to changing from Current ShortPath
+    for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
         int_path[i]=CurrentShortPath[i];
-    for(int i=1;i<quantity_points-1;i++)        //replace two points and compare result
+    for(int i=1;i<q_point-1;i++)        //replace two points and compare result
     {
         path_length=CalcPathLength(original_massive, int_path);     //calc current length path
         Swap(int_path, i,i+1 );                     //swap two elements
@@ -92,22 +92,22 @@ QString TSPResult::AlgotythmDoubleReplace(int original_massive[QUANT_POINTS][QUA
 
 
     }
-    path+="->"+QString::number(int_path[quantity_points-1]+1)+"->"+QString::number(start_point);    //add two last point in path
+    path+="->"+QString::number(int_path[q_point-1]+1)+"->"+QString::number(start_point);    //add two last point in path
     sum_path=CalcPathLength(original_massive, int_path);    //calc result length path
 
     return path;        //return path
 }
 
-QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path, int q_point)
 {
     QString path="";
     path+=QString::number(start_point);        //add start point in path
     double path_length=0;                       //length path
     int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
-    for(int i=0; i<quantity_points;i++)     //copy massive to changing from Current ShortPath
+    for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
         int_path[i]=CurrentShortPath[i];
 
-    for(int i=1;i<quantity_points-2;i++)        //replace two points and compare result
+    for(int i=1;i<q_point-2;i++)        //replace two points and compare result
     {
        for(int j=0;j<3;j++)
        {
@@ -132,22 +132,22 @@ QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QU
        }
  path+="->"+QString::number(int_path[i]+1);      //add points in path result
      }
-    path+="->"+QString::number(int_path[quantity_points-2]+1)+"->"+QString::number(int_path[quantity_points-1]+1)+"->"+QString::number(start_point);    //add two last point in path
+    path+="->"+QString::number(int_path[q_point-2]+1)+"->"+QString::number(int_path[q_point-1]+1)+"->"+QString::number(start_point);    //add two last point in path
     sum_path=CalcPathLength(original_massive, int_path);    //calc result length path
     return path;        //return path
 }
 
-QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
+QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path, int q_point)
 {
     QString path="";
     path+=QString::number(start_point)+"->";        //add start point in path
     double path_length=0;                       //length path
     int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
     int result_path[QUANT_POINTS];
-    for(int i=0; i<quantity_points;i++)     //copy massive to changing from Current ShortPath
+    for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
         int_path[i]=CurrentShortPath[i];
     path_length=CalcPathLength(original_massive,int_path);
-    for(int i=1;i<quantity_points-5;i++)
+    for(int i=1;i<q_point-5;i++)
     {
     for(int a=i;a<i+5;a++)
     {
@@ -164,7 +164,7 @@ QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUA
                    if(path_length>CalcPathLength(original_massive,int_path))
                    {
                        path_length=CalcPathLength(original_massive,int_path);
-                       for(int z=0;z<quantity_points;z++)
+                       for(int z=0;z<q_point;z++)
                        result_path[z]=int_path[z];
                    }
                }
@@ -178,7 +178,7 @@ QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUA
 
 
 
-    for(int i=1;i<quantity_points;i++)
+    for(int i=1;i<q_point;i++)
         path+=QString::number(result_path[i]+1)+"->";
     path+=QString::number(start_point);
 
@@ -198,7 +198,7 @@ void TSPResult::on_buttStartPath_clicked()      //search start path via geedy al
     int start = ui->editStartPoint->text().toInt();         //read from edit point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;                                   //path length by geedy algo
     timer.start();
-    ui->labelPathStart->setText(AlgorythmStartPath(point_distance, start, path_length ));   //show path in label and get path_length
+    ui->labelPathStart->setText(AlgorythmStartPath(point_distance, start, path_length, quantity_points ));   //show path in label and get path_length
     //show short path in label '1->2...->1'
     AlgoTime[0]=timer.nsecsElapsed();       //calc time that occupied geedy algo
         ui->labelTimeStart->setText(QString::number(AlgoTime[0]));  //show quantity time that geedy algo occupie
@@ -217,7 +217,7 @@ void TSPResult::on_buttDoubleReplacement_clicked()
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;                           //path length by algo double replace..
     timer.start();                                              //start timer
-    ui->labelPath2->setText(AlgotythmDoubleReplace(point_distance, start, path_length ));
+    ui->labelPath2->setText(AlgotythmDoubleReplace(point_distance, start, path_length, quantity_points ));
     //show short path in label '1->2...->1'
     AlgoTime[1]=timer.nsecsElapsed();                           //stop timer
     ui->labelTime2->setText(QString::number(AlgoTime[1]));      //show time that double replace algo occupie
@@ -248,7 +248,7 @@ void TSPResult::on_buttTripleReplacement_clicked()
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;                                    //length path by tripple replace algo
     timer.start();                                          //timer start
-    ui->labelPath3->setText(AlgotythmTrippleReplace(point_distance, start, path_length ));  //show path by tripple replace algo
+    ui->labelPath3->setText(AlgotythmTrippleReplace(point_distance, start, path_length , quantity_points));  //show path by tripple replace algo
     //show short path in label '1->2...->1'
     AlgoTime[2]=timer.nsecsElapsed();               //stop timer
     ui->labelTime3->setText(QString::number(AlgoTime[2]));          //show timer that tripple replace algo occupie
@@ -262,7 +262,7 @@ void TSPResult::on_buttFourthReplacement_clicked()
     int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;                                        //length path
     timer.start();                                              //start timer
-    ui->labelPath4->setText(AlgorythmQuadroReplace(point_distance, start, path_length ));   //show short path as result Quadro replace algo
+    ui->labelPath4->setText(AlgorythmQuadroReplace(point_distance, start, path_length ,quantity_points));   //show short path as result Quadro replace algo
     //show short path in label '1->2...->1'
     AlgoTime[3]=timer.nsecsElapsed();               //stop timer
     ui->labelTime4->setText(QString::number(AlgoTime[3]));      //show time that algo occupie
@@ -321,7 +321,7 @@ void TSPResult::on_buttRandomGenerate_clicked()
     int T[4][_GRAPH_SCALE];            //average time on each interval of N in percent
     int A[4][_GRAPH_SCALE];            //average accuracy on each interval of N in percent
     int quant_from=0;               //quantity points on first step
-    int quant_to=0;                 //quantity points on last step
+    int quant_to=0;                 //quantity points on last step            RandomGenerateMatrixDistance(matrix_distance,i, length_fro
     int quant_step=0;               //step that increase from quant_from to quant_to
     int length_from =0;             //interval random length from length_from
     int length_to = 0;              //to length_to
@@ -334,13 +334,33 @@ void TSPResult::on_buttRandomGenerate_clicked()
     {
         for(int j=0;j<quant_cycle;j++)
         {
-
-            //generate data with quantity point i, distance from length_from to length_to
-            //find time and acuracy
+            QString test;
+            //i - current quantity of points
+            //j - current numb of cycle of itteration i
+            RandomGenerateMatrixDistance(matrix_distance,i, length_from, length_to);        //generate random data
+          //AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
         }
     }
 
 
+}
+
+void TSPResult::RandomGenerateMatrixDistance(int (&matr_distance)[QUANT_POINTS][QUANT_POINTS], int quant_point, int l_from, int l_to)
+{
+    QTime time = QTime::currentTime();
+    qsrand((uint)time.msec());
+    for(int i=0;i<quant_point;i++)
+    {
+        for(int j=i;j<quant_point;j++)
+        {
+            if(i!=j)
+            {
+                matr_distance[i][j]= qrand() % ((l_to + 1) - l_from) + l_from;
+                matr_distance[j][i]=matr_distance[i][j];
+            }
+            else matr_distance[i][j]=_INFINITY;
+        }
+    }
 }
 
 

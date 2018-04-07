@@ -5,6 +5,7 @@
 #define _GRAPH_SCALE 100
 #include <QWidget>
 #include <QElapsedTimer>
+#include <QTime>
 namespace Ui {
 class TSPResult;
 }
@@ -16,10 +17,10 @@ class TSPResult : public QWidget
 public:
     explicit TSPResult(QWidget *parent = 0);
     TSPResult(int (&)[QUANT_POINTS][QUANT_POINTS], int );            //constructor with parameters
-    QString AlgorythmStartPath(int [QUANT_POINTS][QUANT_POINTS], int, double &);  //geedy algorythm search start short path
-    QString AlgotythmDoubleReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, double replace
-    QString AlgotythmTrippleReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &); //algorythm local find, tripple replace
-    QString AlgorythmQuadroReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &);  //algorythm local find, quadro replace
+    QString AlgorythmStartPath(int [QUANT_POINTS][QUANT_POINTS], int, double &, int);  //geedy algorythm search start short path
+    QString AlgotythmDoubleReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &, int); //algorythm local find, double replace
+    QString AlgotythmTrippleReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &, int); //algorythm local find, tripple replace
+    QString AlgorythmQuadroReplace(int [QUANT_POINTS][QUANT_POINTS], int, double &, int);  //algorythm local find, quadro replace
     //Original massive, start position (point that will be start ), and length of path (sum) , type double
     ~TSPResult();
 
@@ -43,6 +44,7 @@ private slots:
   //  void on_buttAnalyze_clicked();
 
 private:
+    void RandomGenerateMatrixDistance(int (&)[QUANT_POINTS][QUANT_POINTS], int, int, int);//quant point, start distance, end distance (interval random)
     void ReadFromEditForRandom(int &, int&, int&, int&, int&, int&, int&);
     void SetProgressBar();          //set value for all progress bar
     int AlgoTime[4];
