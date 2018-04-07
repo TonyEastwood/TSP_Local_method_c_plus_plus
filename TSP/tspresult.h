@@ -4,6 +4,7 @@
 #define _INFINITY  1000000          //max distance between points
 #define _GRAPH_SCALE 100
 #include <QWidget>
+#include "graph.h"
 #include <QElapsedTimer>
 #include <QTime>
 namespace Ui {
@@ -50,6 +51,7 @@ private:
     void SetProgressBar();          //set value for all progress bar
     int AlgoTime[4];
     double AlgoLength[4];
+    Graph *graph_dr;
     QElapsedTimer timer;
     void Swap(int (&)[QUANT_POINTS], int, int);
     double CalcPathLength(int [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS], int);

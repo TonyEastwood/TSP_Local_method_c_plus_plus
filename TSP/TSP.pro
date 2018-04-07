@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = TSP
 TEMPLATE = app
@@ -26,12 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         widget.cpp \
-    tspresult.cpp
+    tspresult.cpp \
+    graph.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
         widget.h \
-    tspresult.h
+    tspresult.h \
+    graph.h \
+    qcustomplot.h
 
 FORMS += \
         widget.ui \
-    tspresult.ui
+    tspresult.ui \
+    graph.ui

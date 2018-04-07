@@ -432,7 +432,10 @@ void TSPResult::on_buttRandomGenerate_clicked()
 
         k++;
     }
+
 //send data A[][] and T[][] and draw graphic and k - quantity point
+graph_dr= new Graph(A, T, quant_from, quant_to, quant_step);
+graph_dr->show();
 
 }
 
