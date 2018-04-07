@@ -65,7 +65,7 @@ QString TSPResult::AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_P
             CurrentShortPath[k]=index;           //add current point in queue
             k++;
         }
-        sum_path=CalcPathLength(original_massive,CurrentShortPath); //calc path length
+        sum_path=CalcPathLength(original_massive,CurrentShortPath, q_points); //calc path length
         path+="->"+QString::number(start_point); //add start point at the and '1->....->1'      //add start point in the end
 
         return path;            //return path '1->3->5->1'
@@ -81,9 +81,9 @@ QString TSPResult::AlgotythmDoubleReplace(int original_massive[QUANT_POINTS][QUA
         int_path[i]=CurrentShortPath[i];
     for(int i=1;i<q_point-1;i++)        //replace two points and compare result
     {
-        path_length=CalcPathLength(original_massive, int_path);     //calc current length path
+        path_length=CalcPathLength(original_massive, int_path, q_point);     //calc current length path
         Swap(int_path, i,i+1 );                     //swap two elements
-        if (path_length< CalcPathLength(original_massive,int_path)) //if begin length > then current
+        if (path_length< CalcPathLength(original_massive,int_path, q_point)) //if begin length > then current
         {
             Swap(int_path, i,i+1 );                 //revert to start position
         }
@@ -93,7 +93,7 @@ QString TSPResult::AlgotythmDoubleReplace(int original_massive[QUANT_POINTS][QUA
 
     }
     path+="->"+QString::number(int_path[q_point-1]+1)+"->"+QString::number(start_point);    //add two last point in path
-    sum_path=CalcPathLength(original_massive, int_path);    //calc result length path
+    sum_path=CalcPathLength(original_massive, int_path, q_point);    //calc result length path
 
     return path;        //return path
 }
@@ -111,12 +111,12 @@ QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QU
     {
        for(int j=0;j<3;j++)
        {
-           path_length=CalcPathLength(original_massive,int_path);
+           path_length=CalcPathLength(original_massive,int_path, q_point);
            Swap(int_path,i,i+1);
-           if (path_length < CalcPathLength(original_massive,int_path))
+           if (path_length < CalcPathLength(original_massive,int_path, q_point))
            {
                Swap(int_path,i+1,i+2);
-               if(path_length<CalcPathLength(original_massive,int_path))
+               if(path_length<CalcPathLength(original_massive,int_path, q_point))
                {
                     Swap(int_path,i+1,i+2);
                     Swap(int_path,i,i+1);
@@ -126,14 +126,14 @@ QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QU
            else
            {
                 Swap(int_path,i+1,i+2);
-                   if(path_length<CalcPathLength(original_massive,int_path))
+                   if(path_length<CalcPathLength(original_massive,int_path, q_point))
                         Swap(int_path,i+1,i+2);
            }
        }
  path+="->"+QString::number(int_path[i]+1);      //add points in path result
      }
     path+="->"+QString::number(int_path[q_point-2]+1)+"->"+QString::number(int_path[q_point-1]+1)+"->"+QString::number(start_point);    //add two last point in path
-    sum_path=CalcPathLength(original_massive, int_path);    //calc result length path
+    sum_path=CalcPathLength(original_massive, int_path, q_point);    //calc result length path
     return path;        //return path
 }
 
@@ -146,7 +146,9 @@ QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUA
     int result_path[QUANT_POINTS];
     for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
         int_path[i]=CurrentShortPath[i];
-    path_length=CalcPathLength(original_massive,int_path);
+    for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
+        result_path[i]=CurrentShortPath[i];
+    path_length=CalcPathLength(original_massive,int_path, q_point);
     for(int i=1;i<q_point-5;i++)
     {
     for(int a=i;a<i+5;a++)
@@ -161,9 +163,9 @@ QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUA
                for(int d=i;d<i+2;d++)
                {
                    Swap(int_path,i+3,d+3);
-                   if(path_length>CalcPathLength(original_massive,int_path))
+                   if(path_length>CalcPathLength(original_massive,int_path, q_point))
                    {
-                       path_length=CalcPathLength(original_massive,int_path);
+                       path_length=CalcPathLength(original_massive,int_path, q_point);
                        for(int z=0;z<q_point;z++)
                        result_path[z]=int_path[z];
                    }
@@ -174,7 +176,8 @@ QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUA
 
     }
     }
-
+    //for(int z=0;z<q_point;z++)
+   //result_path[z]=int_path[z];
 
 
 
@@ -183,7 +186,7 @@ QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUA
     path+=QString::number(start_point);
 
 
-    sum_path=CalcPathLength(original_massive, result_path);    //calc result length path
+    sum_path=CalcPathLength(original_massive, result_path, q_point);    //calc result length path
     return path;        //return path
 }
 TSPResult::~TSPResult()
@@ -232,13 +235,13 @@ void TSPResult::Swap(int (&massive_value)[QUANT_POINTS], int i, int j)      //sw
     massive_value[j]=temp;
 }
 
-double TSPResult::CalcPathLength(int matrix_distance[QUANT_POINTS][QUANT_POINTS], int Path[QUANT_POINTS])
+double TSPResult::CalcPathLength(int matrix_distance[QUANT_POINTS][QUANT_POINTS], int Path[QUANT_POINTS], int q_points)
 //calc length in massive Path where matrix_distance - matrix with distance between points
 {
     int sum=0;              // path length
-    for(int i=0;i<quantity_points-1;i++)
+    for(int i=0;i<q_points-1;i++)
            sum+=matrix_distance[Path[i]][Path[i+1]];        //sum all elements in massive
-    sum+=matrix_distance[Path[quantity_points-1]][Path[0]]; //add last length '1->...9->1'
+    sum+=matrix_distance[Path[q_points-1]][Path[0]]; //add last length '1->...9->1'
     return sum;         //return path length
 }
 
@@ -318,10 +321,17 @@ void TSPResult::on_radioButton_2_clicked()      //check matrix from random gener
 
 void TSPResult::on_buttRandomGenerate_clicked()
 {
-    int T[4][_GRAPH_SCALE];            //average time on each interval of N in percent
-    int A[4][_GRAPH_SCALE];            //average accuracy on each interval of N in percent
+    double T[4][_GRAPH_SCALE];            //average time on each interval of N in percent
+    double A[4][_GRAPH_SCALE];            //average accuracy on each interval of N in percent
+    double max_time=0;
+    double max_length=0;
+    double AverageTime[50];                //average time on each step
+    double AverageAccuracy[50];            //average accuracy on each step
+    double SumTime[4];                      //sum time to process average value
+    double sum_path=0;
+    double SumAccuracy[4];                  //sum accuracy to process average value
     int quant_from=0;               //quantity points on first step
-    int quant_to=0;                 //quantity points on last step            RandomGenerateMatrixDistance(matrix_distance,i, length_fro
+    int quant_to=0;                 //5quantity points on last step            RandomGenerateMatrixDistance(matrix_distance,i, length_fro
     int quant_step=0;               //step that increase from quant_from to quant_to
     int length_from =0;             //interval random length from length_from
     int length_to = 0;              //to length_to
@@ -330,18 +340,99 @@ void TSPResult::on_buttRandomGenerate_clicked()
     int matrix_distance[QUANT_POINTS][QUANT_POINTS];
     ReadFromEditForRandom(quant_from,quant_to,quant_step,length_from,length_to,quant_cycle, start_point);    //read data from edit and
     //write it to variables
+    InitialDoubleMassive(SumTime, 4);
+    InitialDoubleMassive(SumAccuracy,4);
+    InitialDoubleMassive(AverageAccuracy, 50);
+    InitialDoubleMassive(AverageTime, 50);
+    for(int i=0;i<4;i++)
+    {
+         InitialDoubleMassive(T[i], _GRAPH_SCALE);
+         InitialDoubleMassive(A[i], _GRAPH_SCALE);
+    }
+    int k=0;
     for(int i=quant_from;i<=quant_to;i+=quant_step)
     {
+
         for(int j=0;j<quant_cycle;j++)
         {
+          //  InitialIntMassive(SumTime, 4);
+           // InitialIntMassive(SumAccuracy,4);
+            max_time=0;
+            max_length=0;
             QString test;
             //i - current quantity of points
             //j - current numb of cycle of itteration i
             RandomGenerateMatrixDistance(matrix_distance,i, length_from, length_to);        //generate random data
-          //AlgorythmStartPath(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path)
-        }
-    }
 
+             //Start path
+            timer.start();                                          //timer start
+            test=AlgorythmStartPath(matrix_distance,  start_point, sum_path, i);
+            SumTime[0]=timer.nsecsElapsed();
+            SumAccuracy[0]=sum_path;
+            //end Start path
+            max_length=SumAccuracy[0];
+            max_time=SumTime[0];
+
+            //Double Replace
+            timer.start();                                          //timer start
+            test=AlgotythmDoubleReplace(matrix_distance,  start_point, sum_path, i);
+            SumTime[1]=timer.nsecsElapsed();
+            SumAccuracy[1]=sum_path;
+            //end Double Replace
+            if(max_length<SumAccuracy[1])
+                max_length=SumAccuracy[1];
+            if (max_time<SumTime[1])
+                max_time=SumTime[1];
+
+            //Tripple Replace
+            timer.start();                                          //timer start
+            test=AlgotythmTrippleReplace(matrix_distance,  start_point, sum_path, i);
+            SumTime[2]=timer.nsecsElapsed();
+            SumAccuracy[2]=sum_path;
+            //end Tripple Replace
+            if(max_length<SumAccuracy[2])
+                max_length=SumAccuracy[2];
+            if (max_time<SumTime[2])
+                max_time=SumTime[2];
+
+            //Quadro Replace
+            timer.start();                                          //timer start
+            test=AlgorythmQuadroReplace(matrix_distance,  start_point, sum_path, i);
+            SumTime[3]=timer.nsecsElapsed();
+            SumAccuracy[3]=sum_path;
+            //end Quadro Replace
+            if(max_length<SumAccuracy[3])
+                max_length=SumAccuracy[3];
+            if (max_time<SumTime[3])
+                max_time=SumTime[3];
+
+
+
+            A[0][k]+=100-(double)SumAccuracy[0]/max_length*100;
+            A[1][k]+=100-(double)SumAccuracy[1]/max_length*100;
+            A[2][k]+=100-(double)SumAccuracy[2]/max_length*100;
+            A[3][k]+=100-(double)SumAccuracy[3]/max_length*100;
+            T[0][k]+=(double)SumTime[0]/max_time*100;
+            T[1][k]+=(double)SumTime[1]/max_time*100;
+            T[2][k]+=(double)SumTime[2]/max_time*100;
+            T[3][k]+=(double)SumTime[3]/max_time*100;
+
+        }
+        A[0][k]/=quant_cycle;
+        A[1][k]/=quant_cycle;
+        A[2][k]/=quant_cycle;
+        A[3][k]/=quant_cycle;
+        T[0][k]/=quant_cycle;
+        T[1][k]/=quant_cycle;
+        T[2][k]/=quant_cycle;
+        T[3][k]/=quant_cycle;
+
+
+
+
+        k++;
+    }
+//send data A[][] and T[][] and draw graphic and k - quantity point
 
 }
 
@@ -376,4 +467,10 @@ void TSPResult::ReadFromEditForRandom(int &q_from, int &q_to, int &q_step, int &
     s_point= ui->editStartPoint->text().toInt();
 
 
+}
+
+void TSPResult::InitialDoubleMassive(double *massive, int quant)
+{
+    for(int i=0;i<quant;i++)
+        *(massive+i)=0;
 }

@@ -1,6 +1,6 @@
 #ifndef WIDGET_H
 #define WIDGET_H
-#define QUANT_POINTS 15            //max quantity of points that file can involve
+#define QUANT_POINTS 30            //max quantity of points that file can involve
 #define _INFINITY  1000000          //max distance between points
 #include <QFile>
 #include <QWidget>

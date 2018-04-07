@@ -838,7 +838,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>5</string>
+    <string>6</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="editPointTo">
@@ -903,7 +903,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>30</string>
+    <string>100</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -929,7 +929,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>20</string>
+    <string>25</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">

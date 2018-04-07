@@ -1,6 +1,6 @@
 #ifndef TSPRESULT_H
 #define TSPRESULT_H
-#define QUANT_POINTS 15            //max quantity of points that file can involve   (if points so many, app can crash )
+#define QUANT_POINTS 30            //max quantity of points that file can involve   (if points so many, app can crash )
 #define _INFINITY  1000000          //max distance between points
 #define _GRAPH_SCALE 100
 #include <QWidget>
@@ -46,12 +46,13 @@ private slots:
 private:
     void RandomGenerateMatrixDistance(int (&)[QUANT_POINTS][QUANT_POINTS], int, int, int);//quant point, start distance, end distance (interval random)
     void ReadFromEditForRandom(int &, int&, int&, int&, int&, int&, int&);
+    void InitialDoubleMassive(double *, int);  //initial massive by zero
     void SetProgressBar();          //set value for all progress bar
     int AlgoTime[4];
     double AlgoLength[4];
     QElapsedTimer timer;
     void Swap(int (&)[QUANT_POINTS], int, int);
-    double CalcPathLength(int [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS]);
+    double CalcPathLength(int [QUANT_POINTS][QUANT_POINTS], int [QUANT_POINTS], int);
     int CurrentShortPath[QUANT_POINTS];                       //massive that contain path like '1 2 6 3 4' that search due to geedy algoryth
     int point_distance[QUANT_POINTS][QUANT_POINTS];    //matrix distance between points (from file)
    // int point_distance_random[QUANT_POINTS][QUANT_POINTS];   //matrix distance between points (random generate)

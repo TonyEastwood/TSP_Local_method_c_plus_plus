@@ -326,14 +326,14 @@ public:
         label_2->setText(QApplication::translate("TSPResult", "From", nullptr));
         label_3->setText(QApplication::translate("TSPResult", "To", nullptr));
         label_4->setText(QApplication::translate("TSPResult", "Step", nullptr));
-        editPointFrom->setText(QApplication::translate("TSPResult", "5", nullptr));
+        editPointFrom->setText(QApplication::translate("TSPResult", "6", nullptr));
         editPointTo->setText(QApplication::translate("TSPResult", "10", nullptr));
         editPointStep->setText(QApplication::translate("TSPResult", "2", nullptr));
         label_5->setText(QApplication::translate("TSPResult", "Interval length", nullptr));
         label_6->setText(QApplication::translate("TSPResult", "From", nullptr));
-        editLengthTo->setText(QApplication::translate("TSPResult", "30", nullptr));
+        editLengthTo->setText(QApplication::translate("TSPResult", "100", nullptr));
         label_7->setText(QApplication::translate("TSPResult", "To", nullptr));
-        editLengthFrom->setText(QApplication::translate("TSPResult", "20", nullptr));
+        editLengthFrom->setText(QApplication::translate("TSPResult", "25", nullptr));
         label_8->setText(QApplication::translate("TSPResult", "Quantity cycle", nullptr));
         editQuantCycle->setText(QApplication::translate("TSPResult", "5", nullptr));
     } // retranslateUi
