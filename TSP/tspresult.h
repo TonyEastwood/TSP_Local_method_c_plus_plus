@@ -2,6 +2,7 @@
 #define TSPRESULT_H
 #define QUANT_POINTS 15            //max quantity of points that file can involve   (if points so many, app can crash )
 #define _INFINITY  1000000          //max distance between points
+#define _GRAPH_SCALE 100
 #include <QWidget>
 #include <QElapsedTimer>
 namespace Ui {
@@ -39,8 +40,10 @@ private slots:
 
     void on_buttRandomGenerate_clicked();
 
+  //  void on_buttAnalyze_clicked();
+
 private:
-    //ConfigureRandomGenerate *ConfigureForm;
+    void ReadFromEditForRandom(int *, int*, int*, int*, int*, int*);
     void SetProgressBar();          //set value for all progress bar
     int AlgoTime[4];
     double AlgoLength[4];

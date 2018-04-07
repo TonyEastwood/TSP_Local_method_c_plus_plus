@@ -318,5 +318,27 @@ void TSPResult::on_radioButton_2_clicked()      //check matrix from random gener
 
 void TSPResult::on_buttRandomGenerate_clicked()
 {
+    int T[_GRAPH_SCALE];            //average time on each interval of N in percent
+    int A[_GRAPH_SCALE];            //average accuracy on each interval of N in percent
+    int quant_from=0;               //quantity points on first step
+    int quant_to=0;                 //quantity points on last step
+    int quant_step=0;               //step that increase from quant_from to quant_to
+    int length_from =0;             //interval random length from length_from
+    int length_to = 0;              //to length_to
+    int quant_cycle=0;              //quantity cycle on each N
 
+
+
+}
+
+
+
+void TSPResult::ReadFromEditForRandom(int *, int *, int *, int *, int *, int *)
+{
+    /*   int quant_from=0;               //quantity points on first step
+       int quant_to=0;                 //quantity points on last step
+       int quant_step=0;               //step that increase from quant_from to quant_to
+       int length_from =0;             //interval random length from length_from
+       int length_to = 0;              //to length_to
+       int quant_cycle=0;              //quantity cycle on each N*/
 }

@@ -58,10 +58,23 @@ public:
     QProgressBar *progressDoubleReplaceTIme;
     QLabel *label_Time;
     QLabel *label_accuracy;
-    QPushButton *buttAnalyze;
     QPushButton *buttRandomGenerate;
     QRadioButton *radioButton;
     QRadioButton *radioButton_2;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
+    QLineEdit *editPointFrom;
+    QLineEdit *editPointTo;
+    QLineEdit *editPointStep;
+    QLabel *label_5;
+    QLabel *label_6;
+    QLineEdit *editLengthTo;
+    QLabel *label_7;
+    QLineEdit *editLengthFrom;
+    QLabel *label_8;
+    QLineEdit *editQuantCycle;
 
     void setupUi(QWidget *TSPResult)
     {
@@ -222,19 +235,58 @@ public:
         label_accuracy = new QLabel(TSPResult);
         label_accuracy->setObjectName(QStringLiteral("label_accuracy"));
         label_accuracy->setGeometry(QRect(610, 30, 67, 17));
-        buttAnalyze = new QPushButton(TSPResult);
-        buttAnalyze->setObjectName(QStringLiteral("buttAnalyze"));
-        buttAnalyze->setGeometry(QRect(370, 370, 171, 51));
         buttRandomGenerate = new QPushButton(TSPResult);
         buttRandomGenerate->setObjectName(QStringLiteral("buttRandomGenerate"));
-        buttRandomGenerate->setGeometry(QRect(680, 450, 201, 51));
+        buttRandomGenerate->setGeometry(QRect(590, 530, 201, 51));
         radioButton = new QRadioButton(TSPResult);
         radioButton->setObjectName(QStringLiteral("radioButton"));
-        radioButton->setGeometry(QRect(360, 440, 141, 23));
+        radioButton->setGeometry(QRect(60, 510, 141, 23));
         radioButton->setChecked(true);
         radioButton_2 = new QRadioButton(TSPResult);
         radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
-        radioButton_2->setGeometry(QRect(360, 470, 211, 23));
+        radioButton_2->setGeometry(QRect(50, 540, 211, 23));
+        label = new QLabel(TSPResult);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(630, 350, 141, 17));
+        label_2 = new QLabel(TSPResult);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(410, 390, 141, 17));
+        label_3 = new QLabel(TSPResult);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(570, 390, 141, 17));
+        label_4 = new QLabel(TSPResult);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(740, 390, 141, 17));
+        editPointFrom = new QLineEdit(TSPResult);
+        editPointFrom->setObjectName(QStringLiteral("editPointFrom"));
+        editPointFrom->setGeometry(QRect(450, 390, 113, 25));
+        editPointTo = new QLineEdit(TSPResult);
+        editPointTo->setObjectName(QStringLiteral("editPointTo"));
+        editPointTo->setGeometry(QRect(610, 390, 113, 25));
+        editPointStep = new QLineEdit(TSPResult);
+        editPointStep->setObjectName(QStringLiteral("editPointStep"));
+        editPointStep->setGeometry(QRect(780, 390, 113, 25));
+        label_5 = new QLabel(TSPResult);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(610, 420, 141, 17));
+        label_6 = new QLabel(TSPResult);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(510, 450, 141, 17));
+        editLengthTo = new QLineEdit(TSPResult);
+        editLengthTo->setObjectName(QStringLiteral("editLengthTo"));
+        editLengthTo->setGeometry(QRect(710, 450, 113, 25));
+        label_7 = new QLabel(TSPResult);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(670, 450, 141, 17));
+        editLengthFrom = new QLineEdit(TSPResult);
+        editLengthFrom->setObjectName(QStringLiteral("editLengthFrom"));
+        editLengthFrom->setGeometry(QRect(550, 450, 113, 25));
+        label_8 = new QLabel(TSPResult);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(470, 500, 111, 17));
+        editQuantCycle = new QLineEdit(TSPResult);
+        editQuantCycle->setObjectName(QStringLiteral("editQuantCycle"));
+        editQuantCycle->setGeometry(QRect(580, 490, 141, 31));
 
         retranslateUi(TSPResult);
 
@@ -267,10 +319,17 @@ public:
         buttAllAlgorythm->setText(QApplication::translate("TSPResult", "Find All Value", nullptr));
         label_Time->setText(QApplication::translate("TSPResult", "Time", nullptr));
         label_accuracy->setText(QApplication::translate("TSPResult", "Efficiency", nullptr));
-        buttAnalyze->setText(QApplication::translate("TSPResult", "Full analyze result", nullptr));
         buttRandomGenerate->setText(QApplication::translate("TSPResult", "Configure random generate", nullptr));
         radioButton->setText(QApplication::translate("TSPResult", "Matrix from file", nullptr));
         radioButton_2->setText(QApplication::translate("TSPResult", "Random generated matrix", nullptr));
+        label->setText(QApplication::translate("TSPResult", "Interval points", nullptr));
+        label_2->setText(QApplication::translate("TSPResult", "From", nullptr));
+        label_3->setText(QApplication::translate("TSPResult", "To", nullptr));
+        label_4->setText(QApplication::translate("TSPResult", "Step", nullptr));
+        label_5->setText(QApplication::translate("TSPResult", "Interval length", nullptr));
+        label_6->setText(QApplication::translate("TSPResult", "From", nullptr));
+        label_7->setText(QApplication::translate("TSPResult", "To", nullptr));
+        label_8->setText(QApplication::translate("TSPResult", "Quantity cycle", nullptr));
     } // retranslateUi
 
 };
