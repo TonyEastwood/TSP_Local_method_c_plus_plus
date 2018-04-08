@@ -28,15 +28,18 @@ SOURCES += \
         widget.cpp \
     tspresult.cpp \
     graph.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    mainform.cpp
 
 HEADERS += \
         widget.h \
     tspresult.h \
     graph.h \
-    qcustomplot.h
+    qcustomplot.h \
+    mainform.h
 
 FORMS += \
         widget.ui \
     tspresult.ui \
-    graph.ui
+    graph.ui \
+    mainform.ui

@@ -14,13 +14,21 @@
    <string>Form</string>
   </property>
   <widget class="QPushButton" name="buttStartPath">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>80</y>
      <width>151</width>
-     <height>25</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Start path</string>
@@ -29,11 +37,16 @@
   <widget class="QPushButton" name="buttDoubleReplacement">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>140</y>
+     <x>20</x>
+     <y>130</y>
      <width>151</width>
-     <height>31</height>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>2 replacement</string>
@@ -42,11 +55,16 @@
   <widget class="QPushButton" name="buttTripleReplacement">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>210</y>
-     <width>141</width>
-     <height>51</height>
+     <x>20</x>
+     <y>190</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>3 replacement</string>
@@ -55,11 +73,16 @@
   <widget class="QPushButton" name="buttFourthReplacement">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>310</y>
-     <width>141</width>
-     <height>25</height>
+     <x>20</x>
+     <y>250</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>4 replacement</string>
@@ -68,37 +91,52 @@
   <widget class="QLabel" name="labelTime">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>210</x>
      <y>30</y>
-     <width>67</width>
+     <width>91</width>
      <height>17</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>Time</string>
+    <string>Time (nsec)</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelResult">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>320</x>
      <y>30</y>
-     <width>67</width>
+     <width>101</width>
      <height>17</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>Result Value</string>
+    <string>Path length</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelTimeStart">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>80</y>
-     <width>67</width>
+     <x>200</x>
+     <y>90</y>
+     <width>101</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -108,10 +146,15 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>140</y>
-     <width>67</width>
+     <y>150</y>
+     <width>101</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -121,10 +164,15 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>220</y>
-     <width>67</width>
+     <y>200</y>
+     <width>101</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -134,10 +182,15 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>310</y>
-     <width>67</width>
+     <y>260</y>
+     <width>101</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -146,11 +199,16 @@
   <widget class="QLabel" name="labelResultStart">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>80</y>
-     <width>67</width>
+     <x>320</x>
+     <y>90</y>
+     <width>101</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -159,11 +217,16 @@
   <widget class="QLabel" name="labelResult2">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>130</y>
-     <width>67</width>
+     <x>320</x>
+     <y>150</y>
+     <width>91</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -172,11 +235,16 @@
   <widget class="QLabel" name="labelResult3">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>220</y>
-     <width>67</width>
+     <x>320</x>
+     <y>200</y>
+     <width>101</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -185,11 +253,16 @@
   <widget class="QLabel" name="labelResult4">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>300</y>
-     <width>67</width>
+     <x>320</x>
+     <y>260</y>
+     <width>101</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -198,11 +271,16 @@
   <widget class="QLabel" name="labelPath">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>760</x>
      <y>30</y>
      <width>67</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Path</string>
@@ -211,11 +289,16 @@
   <widget class="QLabel" name="labelPathStart">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>80</y>
-     <width>271</width>
+     <x>750</x>
+     <y>90</y>
+     <width>821</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -224,11 +307,16 @@
   <widget class="QLabel" name="labelPath2">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>120</y>
-     <width>351</width>
+     <x>750</x>
+     <y>150</y>
+     <width>831</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -237,11 +325,16 @@
   <widget class="QLabel" name="labelPath3">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>210</y>
-     <width>371</width>
+     <x>740</x>
+     <y>200</y>
+     <width>841</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -250,11 +343,16 @@
   <widget class="QLabel" name="labelPath4">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>290</y>
-     <width>321</width>
+     <x>740</x>
+     <y>260</y>
+     <width>841</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -263,11 +361,16 @@
   <widget class="QLabel" name="labelStartPoint">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>370</y>
-     <width>331</width>
+     <x>280</x>
+     <y>310</y>
+     <width>431</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Start Point</string>
@@ -276,21 +379,29 @@
   <widget class="QLineEdit" name="editStartPoint">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>400</y>
+     <x>280</x>
+     <y>340</y>
      <width>113</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>1</string>
    </property>
   </widget>
   <widget class="QPushButton" name="buttAllAlgorythm">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>440</y>
+     <y>320</y>
      <width>171</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Find All Value</string>
@@ -299,8 +410,8 @@
   <widget class="QProgressBar" name="progressStartPathAccuracy">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>80</y>
+     <x>460</x>
+     <y>90</y>
      <width>118</width>
      <height>23</height>
     </rect>
@@ -349,8 +460,8 @@
   <widget class="QProgressBar" name="progressDoubleReplaceAccuracy">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>120</y>
+     <x>460</x>
+     <y>150</y>
      <width>118</width>
      <height>23</height>
     </rect>
@@ -399,7 +510,7 @@
   <widget class="QProgressBar" name="progressTrippleReplaceAccuracy">
    <property name="geometry">
     <rect>
-     <x>560</x>
+     <x>460</x>
      <y>200</y>
      <width>118</width>
      <height>23</height>
@@ -449,8 +560,8 @@
   <widget class="QProgressBar" name="progressQuadroReplaceAccuracy">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>290</y>
+     <x>460</x>
+     <y>260</y>
      <width>118</width>
      <height>23</height>
     </rect>
@@ -499,8 +610,8 @@
   <widget class="QProgressBar" name="progressStartPathTime">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>80</y>
+     <x>610</x>
+     <y>90</y>
      <width>118</width>
      <height>23</height>
     </rect>
@@ -552,7 +663,7 @@
   <widget class="QProgressBar" name="progressTrippleReplaceTime">
    <property name="geometry">
     <rect>
-     <x>720</x>
+     <x>610</x>
      <y>200</y>
      <width>118</width>
      <height>23</height>
@@ -605,8 +716,8 @@
   <widget class="QProgressBar" name="progressQuadroReplaceTime">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>290</y>
+     <x>610</x>
+     <y>260</y>
      <width>118</width>
      <height>23</height>
     </rect>
@@ -658,8 +769,8 @@
   <widget class="QProgressBar" name="progressDoubleReplaceTIme">
    <property name="geometry">
     <rect>
-     <x>740</x>
-     <y>120</y>
+     <x>610</x>
+     <y>150</y>
      <width>118</width>
      <height>23</height>
     </rect>
@@ -711,11 +822,16 @@
   <widget class="QLabel" name="label_Time">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>630</x>
      <y>30</y>
      <width>67</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Time</string>
@@ -724,24 +840,37 @@
   <widget class="QLabel" name="label_accuracy">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>30</y>
-     <width>67</width>
-     <height>17</height>
+     <x>460</x>
+     <y>20</y>
+     <width>111</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Efficiency</string>
    </property>
   </widget>
   <widget class="QPushButton" name="buttRandomGenerate">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>590</x>
+     <x>560</x>
      <y>530</y>
-     <width>201</width>
+     <width>291</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Configure random generate</string>
@@ -750,11 +879,16 @@
   <widget class="QRadioButton" name="radioButton">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>510</y>
-     <width>141</width>
+     <x>30</x>
+     <y>410</y>
+     <width>181</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Matrix from file</string>
@@ -766,11 +900,16 @@
   <widget class="QRadioButton" name="radioButton_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>540</y>
-     <width>211</width>
+     <x>30</x>
+     <y>450</y>
+     <width>281</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Random generated matrix</string>
@@ -779,11 +918,16 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>350</y>
+     <x>650</x>
+     <y>330</y>
      <width>141</width>
-     <height>17</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Interval points</string>
@@ -792,11 +936,16 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>390</y>
-     <width>141</width>
+     <x>430</x>
+     <y>370</y>
+     <width>51</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>From</string>
@@ -805,11 +954,16 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>390</y>
-     <width>141</width>
+     <x>610</x>
+     <y>370</y>
+     <width>31</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>To</string>
@@ -818,21 +972,29 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>740</x>
-     <y>390</y>
-     <width>141</width>
-     <height>17</height>
+     <x>780</x>
+     <y>350</y>
+     <width>41</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Step</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="editPointFrom">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>390</y>
+     <x>490</x>
+     <y>370</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -842,10 +1004,13 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="editPointTo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>390</y>
+     <x>650</x>
+     <y>370</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -855,10 +1020,13 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="editPointStep">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>780</x>
-     <y>390</y>
+     <x>830</x>
+     <y>370</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -870,11 +1038,16 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>610</x>
+     <x>640</x>
      <y>420</y>
      <width>141</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Interval length</string>
@@ -883,20 +1056,28 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>480</x>
      <y>450</y>
-     <width>141</width>
+     <width>61</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>From</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="editLengthTo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>710</x>
+     <x>760</x>
      <y>450</y>
      <width>113</width>
      <height>25</height>
@@ -907,22 +1088,33 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>700</x>
      <y>450</y>
-     <width>141</width>
+     <width>31</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>To</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="editLengthFrom">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>540</x>
      <y>450</y>
      <width>113</width>
      <height>25</height>
@@ -935,20 +1127,28 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>500</y>
-     <width>111</width>
-     <height>17</height>
+     <x>490</x>
+     <y>490</y>
+     <width>141</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>Quantity cycle</string>
+    <string>Quantity cycles</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="editQuantCycle">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>640</x>
      <y>490</y>
      <width>141</width>
      <height>31</height>

@@ -94,9 +94,10 @@ void Widget::on_pushButton_clicked()
     lFile.close();                              //close file
     ShowDataTableFromFile(quantity_points, point_distance);                    //show matrix of distance on tableview
     tspform = new TSPResult(point_distance, quantity_points);
+     tspform->show();
 }
 
 void Widget::on_pushButton_2_clicked()
 {
-    tspform->show();
+
 }

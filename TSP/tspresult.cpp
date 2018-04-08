@@ -198,7 +198,11 @@ TSPResult::~TSPResult()
 void TSPResult::on_buttStartPath_clicked()      //search start path via geedy algorythm
 {
 
+
+
     int start = ui->editStartPoint->text().toInt();         //read from edit point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
+    if (start>=1 && start<=quantity_points)
+    {
     double path_length=0;                                   //path length by geedy algo
     timer.start();
     ui->labelPathStart->setText(AlgorythmStartPath(point_distance, start, path_length, quantity_points ));   //show path in label and get path_length
@@ -207,6 +211,10 @@ void TSPResult::on_buttStartPath_clicked()      //search start path via geedy al
         ui->labelTimeStart->setText(QString::number(AlgoTime[0]));  //show quantity time that geedy algo occupie
     ui->labelResultStart->setText(QString::number(path_length));    //show path length (sum all distance )
     AlgoLength[0]=path_length;      //path length
+    }
+    else
+
+        ErrorStartPoint();
 
 }
 
@@ -216,8 +224,15 @@ void TSPResult::on_buttStartPath_clicked()      //search start path via geedy al
 
 void TSPResult::on_buttDoubleReplacement_clicked()
 {
+
+
+
+
     on_buttStartPath_clicked();                 //the first of all find short path via greedy algo
-    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
+    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path
+    //all path convert from matrix distance to '1->2->5->7->1' etc.
+    if (start>=1 && start<=quantity_points)
+    {
     double path_length=0;                           //path length by algo double replace..
     timer.start();                                              //start timer
     ui->labelPath2->setText(AlgotythmDoubleReplace(point_distance, start, path_length, quantity_points ));
@@ -226,6 +241,10 @@ void TSPResult::on_buttDoubleReplacement_clicked()
     ui->labelTime2->setText(QString::number(AlgoTime[1]));      //show time that double replace algo occupie
     ui->labelResult2->setText(QString::number(path_length));    //show path length (sum all distance )
     AlgoLength[1]=path_length;                          //path length by algo double replace
+    }
+    else
+
+        ErrorStartPoint();
 }
 
 void TSPResult::Swap(int (&massive_value)[QUANT_POINTS], int i, int j)      //swap two elements with index i and j in massive massive_value
@@ -247,8 +266,12 @@ double TSPResult::CalcPathLength(int matrix_distance[QUANT_POINTS][QUANT_POINTS]
 
 void TSPResult::on_buttTripleReplacement_clicked()
 {
+
      on_buttStartPath_clicked();                 //the first of all find short path via greedy algo
-    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
+    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path
+    //all path convert from matrix distance to '1->2->5->7->1' etc.
+    if (start>=1 && start<=quantity_points)
+    {
     double path_length=0;                                    //length path by tripple replace algo
     timer.start();                                          //timer start
     ui->labelPath3->setText(AlgotythmTrippleReplace(point_distance, start, path_length , quantity_points));  //show path by tripple replace algo
@@ -257,12 +280,18 @@ void TSPResult::on_buttTripleReplacement_clicked()
     ui->labelTime3->setText(QString::number(AlgoTime[2]));          //show timer that tripple replace algo occupie
     ui->labelResult3->setText(QString::number(path_length));    //show path length (sum all distance )
     AlgoLength[2]=path_length;                                  //length path
+    }
+    else
+
+        ErrorStartPoint();
 }
 
 void TSPResult::on_buttFourthReplacement_clicked()
 {
      on_buttStartPath_clicked();                 //the first of all find short path via greedy algo
-    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path                                         //all path convert from matrix distance to '1->2->5->7->1' etc.
+    int start = ui->editStartPoint->text().toInt();         //point that will be start for out path
+    if (start>=1 && start<=quantity_points)
+    {//all path convert from matrix distance to '1->2->5->7->1' etc.
     double path_length=0;                                        //length path
     timer.start();                                              //start timer
     ui->labelPath4->setText(AlgorythmQuadroReplace(point_distance, start, path_length ,quantity_points));   //show short path as result Quadro replace algo
@@ -271,17 +300,27 @@ void TSPResult::on_buttFourthReplacement_clicked()
     ui->labelTime4->setText(QString::number(AlgoTime[3]));      //show time that algo occupie
     ui->labelResult4->setText(QString::number(path_length));    //show path length (sum all distance )
     AlgoLength[3]=path_length;                          //length path
+    }
+    else
+
+        ErrorStartPoint();
 }
 
 void TSPResult::on_buttAllAlgorythm_clicked()
 {
-
+    if (ui->editStartPoint->text().toInt()>=1 && ui->editStartPoint->text().toInt()<=quantity_points)
+    {
     on_buttStartPath_clicked();                 //show result via greedy algo
     on_buttDoubleReplacement_clicked();     //show result via double replace
     on_buttTripleReplacement_clicked();     //show result via tripple replace
     on_buttFourthReplacement_clicked();     //show result via fourth replace
 
     SetProgressBar();                   //set all value in progress bar
+    }
+    else
+
+        ErrorStartPoint();
+
 
 }
 
@@ -311,12 +350,36 @@ void TSPResult::on_radioButton_clicked()        //check matrix from file
 {
     ui->radioButton->setChecked(true);
     ui->radioButton_2->setChecked(false);
+    ui->buttStartPath->setEnabled(true);
+    ui->buttDoubleReplacement->setEnabled(true);
+    ui->buttTripleReplacement->setEnabled(true);
+    ui->buttFourthReplacement->setEnabled(true);
+    ui->buttAllAlgorythm->setEnabled(true);
+    ui->buttRandomGenerate->setEnabled(false);
+    ui->editLengthFrom->setEnabled(false);
+    ui->editLengthTo->setEnabled(false);
+    ui->editPointFrom->setEnabled(false);
+    ui->editPointStep->setEnabled(false);
+    ui->editPointTo->setEnabled(false);
+    ui->editQuantCycle->setEnabled(false);
 }
 
 void TSPResult::on_radioButton_2_clicked()      //check matrix from random generate
 {
     ui->radioButton_2->setChecked(true);
     ui->radioButton->setChecked(false);
+    ui->buttStartPath->setEnabled(false);
+    ui->buttDoubleReplacement->setEnabled(false);
+    ui->buttTripleReplacement->setEnabled(false);
+    ui->buttFourthReplacement->setEnabled(false);
+    ui->buttAllAlgorythm->setEnabled(false);
+    ui->buttRandomGenerate->setEnabled(true);
+    ui->editLengthFrom->setEnabled(true);
+    ui->editLengthTo->setEnabled(true);
+    ui->editPointFrom->setEnabled(true);
+    ui->editPointStep->setEnabled(true);
+    ui->editPointTo->setEnabled(true);
+    ui->editQuantCycle->setEnabled(true);
 }
 
 void TSPResult::on_buttRandomGenerate_clicked()
@@ -339,6 +402,44 @@ void TSPResult::on_buttRandomGenerate_clicked()
     int start_point=0;
     int matrix_distance[QUANT_POINTS][QUANT_POINTS];
     ReadFromEditForRandom(quant_from,quant_to,quant_step,length_from,length_to,quant_cycle, start_point);    //read data from edit and
+     QMessageBox Msgbox;
+    if(quant_from>=quant_to)
+    {
+
+           Msgbox.setWindowTitle("Error inteval" );
+           Msgbox.setText("Start quantity of points(From) should be less than end quantity points(To)");
+           Msgbox.exec();
+           return void();
+    }
+    if (length_from<0 || length_to<0)
+    {
+        Msgbox.setWindowTitle("Error distance value" );
+        Msgbox.setText("Distance should be more than zero");
+        Msgbox.exec();
+        return void();
+    }
+    if (length_from >= length_to)
+    {
+        Msgbox.setWindowTitle("Error distance value" );
+        Msgbox.setText("Distance 'From' should be less than 'To'");
+        Msgbox.exec();
+        return void();
+    }
+    if (quant_cycle<=0)
+    {
+        Msgbox.setWindowTitle("Error quantity cycle value" );
+        Msgbox.setText("Quantity cycle should be more than zero");
+        Msgbox.exec();
+        return void();
+    }
+    if (start_point<1 || start_point>quant_to)
+    {
+        Msgbox.setWindowTitle("Error start point" );
+        Msgbox.setText("Input start point from appropriate interval");
+        Msgbox.exec();
+        return void();
+    }
+
     //write it to variables
     InitialDoubleMassive(SumTime, 4);
     InitialDoubleMassive(SumAccuracy,4);
@@ -437,6 +538,14 @@ void TSPResult::on_buttRandomGenerate_clicked()
 graph_dr= new Graph(A, T, quant_from, quant_to, quant_step);
 graph_dr->show();
 
+}
+
+void TSPResult::ErrorStartPoint()
+{
+    QMessageBox Msgbox;
+       Msgbox.setWindowTitle("Error start point" );
+       Msgbox.setText("Input start point from specific interval");
+       Msgbox.exec();
 }
 
 void TSPResult::RandomGenerateMatrixDistance(int (&matr_distance)[QUANT_POINTS][QUANT_POINTS], int quant_point, int l_from, int l_to)

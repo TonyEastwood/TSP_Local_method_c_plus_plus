@@ -27,7 +27,6 @@ class Ui_Widget
 public:
     QPushButton *pushButton;
     QLabel *labelFileName;
-    QPushButton *pushButton_2;
     QTableView *tableView;
     QLineEdit *editFileName;
 
@@ -36,21 +35,52 @@ public:
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QStringLiteral("Widget"));
         Widget->resize(870, 559);
+        QPalette palette;
+        QBrush brush(QColor(255, 255, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        QBrush brush1(QColor(0, 0, 0, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        Widget->setPalette(palette);
         pushButton = new QPushButton(Widget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(300, 10, 271, 25));
+        pushButton->setGeometry(QRect(440, 20, 281, 31));
+        QPalette palette1;
+        QBrush brush2(QColor(186, 189, 182, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        pushButton->setPalette(palette1);
+        QFont font;
+        font.setPointSize(13);
+        pushButton->setFont(font);
         labelFileName = new QLabel(Widget);
         labelFileName->setObjectName(QStringLiteral("labelFileName"));
-        labelFileName->setGeometry(QRect(20, 20, 121, 17));
-        pushButton_2 = new QPushButton(Widget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(20, 90, 89, 25));
+        labelFileName->setGeometry(QRect(30, 10, 181, 41));
+        QPalette palette2;
+        QBrush brush3(QColor(0, 255, 212, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush3);
+        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush3);
+        QBrush brush4(QColor(190, 190, 190, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
+        labelFileName->setPalette(palette2);
+        QFont font1;
+        font1.setPointSize(16);
+        labelFileName->setFont(font1);
         tableView = new QTableView(Widget);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(140, 60, 701, 451));
+        tableView->setGeometry(QRect(20, 60, 841, 481));
         editFileName = new QLineEdit(Widget);
         editFileName->setObjectName(QStringLiteral("editFileName"));
-        editFileName->setGeometry(QRect(160, 10, 113, 25));
+        editFileName->setGeometry(QRect(210, 20, 201, 25));
 
         retranslateUi(Widget);
 
@@ -59,10 +89,9 @@ public:
 
     void retranslateUi(QWidget *Widget)
     {
-        Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
+        Widget->setWindowTitle(QApplication::translate("Widget", "Main", nullptr));
         pushButton->setText(QApplication::translate("Widget", "Open file and show data in table", nullptr));
         labelFileName->setText(QApplication::translate("Widget", "FileName or path", nullptr));
-        pushButton_2->setText(QApplication::translate("Widget", "Open Form TSP", nullptr));
     } // retranslateUi
 
 };

@@ -7,6 +7,7 @@
 #include "graph.h"
 #include <QElapsedTimer>
 #include <QTime>
+#include <QMessageBox>
 namespace Ui {
 class TSPResult;
 }
@@ -45,6 +46,7 @@ private slots:
   //  void on_buttAnalyze_clicked();
 
 private:
+    void ErrorStartPoint();
     void RandomGenerateMatrixDistance(int (&)[QUANT_POINTS][QUANT_POINTS], int, int, int);//quant point, start distance, end distance (interval random)
     void ReadFromEditForRandom(int &, int&, int&, int&, int&, int&, int&);
     void InitialDoubleMassive(double *, int);  //initial massive by zero
