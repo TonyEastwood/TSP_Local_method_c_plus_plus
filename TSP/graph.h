@@ -3,6 +3,7 @@
 #define _GRAPH_SCALE 100
 #include <QWidget>
 #include "qcustomplot.h"
+#include "tip.h"
 namespace Ui {
 class Graph;
 }
@@ -17,10 +18,14 @@ public:
     Graph(double [4][_GRAPH_SCALE], double [4][_GRAPH_SCALE], int, int, int);
     ~Graph();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     double MaxValue(double [4][_GRAPH_SCALE]);
     void DrawGraph(double [4][_GRAPH_SCALE], double[4][_GRAPH_SCALE],int, int,int);
     Ui::Graph *ui;
+    Tip *tip;
 };
 
 #endif // GRAPH_H

@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 #include "qcustomplot.h"
 
@@ -31,6 +32,7 @@ public:
     QLabel *label_5;
     QLabel *label_3;
     QLabel *label_6;
+    QPushButton *pushButton;
 
     void setupUi(QWidget *Graph)
     {
@@ -139,6 +141,9 @@ public:
         palette6.setBrush(QPalette::Disabled, QPalette::Text, brush4);
         label_6->setPalette(palette6);
         label_6->setFont(font);
+        pushButton = new QPushButton(Graph);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(660, 440, 121, 25));
 
         retranslateUi(Graph);
 
@@ -154,6 +159,7 @@ public:
         label_5->setText(QApplication::translate("Graph", " - Algo tripple replace", nullptr));
         label_3->setText(QApplication::translate("Graph", "*Blue line", nullptr));
         label_6->setText(QApplication::translate("Graph", " - Algo quadro replace", nullptr));
+        pushButton->setText(QApplication::translate("Graph", "PushButton", nullptr));
     } // retranslateUi
 
 };

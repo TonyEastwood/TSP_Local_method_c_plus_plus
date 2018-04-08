@@ -128,3 +128,9 @@ void Graph::DrawGraph(double A[4][_GRAPH_SCALE], double T[4][_GRAPH_SCALE], int 
     //И перерисуем график на нашем widget
     ui->widget_2->replot();
 }
+
+void Graph::on_pushButton_clicked()
+{
+    tip= new Tip();
+    tip->show();
+}

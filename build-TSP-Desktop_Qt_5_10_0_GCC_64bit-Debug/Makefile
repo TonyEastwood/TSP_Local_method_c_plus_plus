@@ -55,22 +55,26 @@ SOURCES       = ../TSP/main.cpp \
 		../TSP/tspresult.cpp \
 		../TSP/graph.cpp \
 		../TSP/qcustomplot.cpp \
-		../TSP/mainform.cpp moc_widget.cpp \
+		../TSP/mainform.cpp \
+		../TSP/tip.cpp moc_widget.cpp \
 		moc_tspresult.cpp \
 		moc_graph.cpp \
 		moc_qcustomplot.cpp \
-		moc_mainform.cpp
+		moc_mainform.cpp \
+		moc_tip.cpp
 OBJECTS       = main.o \
 		widget.o \
 		tspresult.o \
 		graph.o \
 		qcustomplot.o \
 		mainform.o \
+		tip.o \
 		moc_widget.o \
 		moc_tspresult.o \
 		moc_graph.o \
 		moc_qcustomplot.o \
-		moc_mainform.o
+		moc_mainform.o \
+		moc_tip.o
 DIST          = ../../../../Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.10.0/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.10.0/gcc_64/mkspecs/common/linux.conf \
@@ -241,12 +245,14 @@ DIST          = ../../../../Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../TSP/tspresult.h \
 		../TSP/graph.h \
 		../TSP/qcustomplot.h \
-		../TSP/mainform.h ../TSP/main.cpp \
+		../TSP/mainform.h \
+		../TSP/tip.h ../TSP/main.cpp \
 		../TSP/widget.cpp \
 		../TSP/tspresult.cpp \
 		../TSP/graph.cpp \
 		../TSP/qcustomplot.cpp \
-		../TSP/mainform.cpp
+		../TSP/mainform.cpp \
+		../TSP/tip.cpp
 QMAKE_TARGET  = TSP
 DESTDIR       = 
 TARGET        = TSP
@@ -255,7 +261,7 @@ TARGET        = TSP
 first: all
 ####### Build rules
 
-$(TARGET): ui_widget.h ui_tspresult.h ui_graph.h ui_mainform.h $(OBJECTS)  
+$(TARGET): ui_widget.h ui_tspresult.h ui_graph.h ui_mainform.h ui_tip.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../TSP/TSP.pro ../../../../Qt/5.10.0/gcc_64/mkspecs/linux-g++/qmake.conf ../../../../Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -616,9 +622,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.10.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../TSP/widget.h ../TSP/tspresult.h ../TSP/graph.h ../TSP/qcustomplot.h ../TSP/mainform.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../TSP/main.cpp ../TSP/widget.cpp ../TSP/tspresult.cpp ../TSP/graph.cpp ../TSP/qcustomplot.cpp ../TSP/mainform.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../TSP/widget.ui ../TSP/tspresult.ui ../TSP/graph.ui ../TSP/mainform.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../TSP/widget.h ../TSP/tspresult.h ../TSP/graph.h ../TSP/qcustomplot.h ../TSP/mainform.h ../TSP/tip.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../TSP/main.cpp ../TSP/widget.cpp ../TSP/tspresult.cpp ../TSP/graph.cpp ../TSP/qcustomplot.cpp ../TSP/mainform.cpp ../TSP/tip.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../TSP/widget.ui ../TSP/tspresult.ui ../TSP/graph.ui ../TSP/mainform.ui ../TSP/tip.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -650,9 +656,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt/5.10.0/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../../../../Qt/5.10.0/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_widget.cpp moc_tspresult.cpp moc_graph.cpp moc_qcustomplot.cpp moc_mainform.cpp
+compiler_moc_header_make_all: moc_widget.cpp moc_tspresult.cpp moc_graph.cpp moc_qcustomplot.cpp moc_mainform.cpp moc_tip.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_widget.cpp moc_tspresult.cpp moc_graph.cpp moc_qcustomplot.cpp moc_mainform.cpp
+	-$(DEL_FILE) moc_widget.cpp moc_tspresult.cpp moc_graph.cpp moc_qcustomplot.cpp moc_mainform.cpp moc_tip.cpp
 moc_widget.cpp: ../../../../Qt/5.10.0/gcc_64/include/QtCore/QFile \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfile.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfiledevice.h \
@@ -1150,6 +1156,7 @@ moc_widget.cpp: ../../../../Qt/5.10.0/gcc_64/include/QtCore/QFile \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QTime \
 		../TSP/widget.h \
@@ -1649,8 +1656,10 @@ moc_tspresult.cpp: ../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QTime \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QMessageBox \
 		../TSP/tspresult.h \
 		moc_predefs.h \
 		../../../../Qt/5.10.0/gcc_64/bin/moc
@@ -2147,6 +2156,7 @@ moc_graph.cpp: ../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../TSP/graph.h \
 		moc_predefs.h \
 		../../../../Qt/5.10.0/gcc_64/bin/moc
@@ -3145,6 +3155,7 @@ moc_mainform.cpp: ../TSP/widget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QTime \
 		../TSP/mainform.h \
@@ -3152,13 +3163,121 @@ moc_mainform.cpp: ../TSP/widget.h \
 		../../../../Qt/5.10.0/gcc_64/bin/moc
 	/home/yourgod/Qt/5.10.0/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yourgod/Qt/5.10.0/gcc_64/mkspecs/linux-g++ -I/home/yourgod/Desktop/GitHubProjects/TSP/TSP -I/home/yourgod/Qt/5.10.0/gcc_64/include -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtPrintSupport -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtWidgets -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtGui -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../TSP/mainform.h -o moc_mainform.cpp
 
+moc_tip.cpp: ../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../TSP/tip.h \
+		moc_predefs.h \
+		../../../../Qt/5.10.0/gcc_64/bin/moc
+	/home/yourgod/Qt/5.10.0/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yourgod/Qt/5.10.0/gcc_64/mkspecs/linux-g++ -I/home/yourgod/Desktop/GitHubProjects/TSP/TSP -I/home/yourgod/Qt/5.10.0/gcc_64/include -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtPrintSupport -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtWidgets -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtGui -I/home/yourgod/Qt/5.10.0/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../TSP/tip.h -o moc_tip.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_widget.h ui_tspresult.h ui_graph.h ui_mainform.h
+compiler_uic_make_all: ui_widget.h ui_tspresult.h ui_graph.h ui_mainform.h ui_tip.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_widget.h ui_tspresult.h ui_graph.h ui_mainform.h
+	-$(DEL_FILE) ui_widget.h ui_tspresult.h ui_graph.h ui_mainform.h ui_tip.h
 ui_widget.h: ../TSP/widget.ui \
 		../../../../Qt/5.10.0/gcc_64/bin/uic
 	/home/yourgod/Qt/5.10.0/gcc_64/bin/uic ../TSP/widget.ui -o ui_widget.h
@@ -3666,6 +3785,10 @@ ui_mainform.h: ../TSP/mainform.ui \
 		../../../../Qt/5.10.0/gcc_64/bin/uic
 	/home/yourgod/Qt/5.10.0/gcc_64/bin/uic ../TSP/mainform.ui -o ui_mainform.h
 
+ui_tip.h: ../TSP/tip.ui \
+		../../../../Qt/5.10.0/gcc_64/bin/uic
+	/home/yourgod/Qt/5.10.0/gcc_64/bin/uic ../TSP/tip.ui -o ui_tip.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -3676,7 +3799,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../TSP/main.cpp ../TSP/widget.h \
+main.o: ../TSP/main.cpp ../TSP/mainform.h \
+		../TSP/widget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QFile \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfile.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfiledevice.h \
@@ -4174,6 +4298,7 @@ main.o: ../TSP/main.cpp ../TSP/widget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QTime \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QApplication
@@ -4677,6 +4802,7 @@ widget.o: ../TSP/widget.cpp ../TSP/widget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QTime \
 		ui_widget.h \
@@ -5183,8 +5309,10 @@ tspresult.o: ../TSP/tspresult.cpp ../TSP/tspresult.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QTime \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QMessageBox \
 		ui_tspresult.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QAction \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QApplication \
@@ -5689,11 +5817,13 @@ graph.o: ../TSP/graph.cpp ../TSP/graph.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		ui_graph.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QAction \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QHeaderView
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QLabel
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graph.o ../TSP/graph.cpp
 
 qcustomplot.o: ../TSP/qcustomplot.cpp ../TSP/qcustomplot.h \
@@ -6688,10 +6818,123 @@ mainform.o: ../TSP/mainform.cpp ../TSP/mainform.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtPrintSupport/qtprintsupportversion.h \
+		../TSP/tip.h \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
 		../../../../Qt/5.10.0/gcc_64/include/QtCore/QTime \
-		ui_mainform.h
+		ui_mainform.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QAction \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QPushButton
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainform.o ../TSP/mainform.cpp
+
+tip.o: ../TSP/tip.cpp ../TSP/tip.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/5.10.0/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_tip.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tip.o ../TSP/tip.cpp
 
 moc_widget.o: moc_widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_widget.o moc_widget.cpp
@@ -6707,6 +6950,9 @@ moc_qcustomplot.o: moc_qcustomplot.cpp
 
 moc_mainform.o: moc_mainform.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainform.o moc_mainform.cpp
+
+moc_tip.o: moc_tip.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tip.o moc_tip.cpp
 
 ####### Install
 

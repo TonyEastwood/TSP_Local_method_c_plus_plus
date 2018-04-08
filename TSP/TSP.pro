@@ -29,17 +29,20 @@ SOURCES += \
     tspresult.cpp \
     graph.cpp \
     qcustomplot.cpp \
-    mainform.cpp
+    mainform.cpp \
+    tip.cpp
 
 HEADERS += \
         widget.h \
     tspresult.h \
     graph.h \
     qcustomplot.h \
-    mainform.h
+    mainform.h \
+    tip.h
 
 FORMS += \
         widget.ui \
     tspresult.ui \
     graph.ui \
-    mainform.ui
+    mainform.ui \
+    tip.ui

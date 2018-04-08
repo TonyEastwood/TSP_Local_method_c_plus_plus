@@ -19,6 +19,7 @@ TSPResult::TSPResult(int (&_matrix_distance)[QUANT_POINTS][QUANT_POINTS], int _q
     ui(new Ui::TSPResult)
 {
         ui->setupUi(this);
+        ui->label_10->setText(QString::number(QUANT_POINTS));
     for(int i=0;i<_quantity_points;i++)
         for(int j=0;j<_quantity_points;j++)
         {
