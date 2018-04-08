@@ -75,7 +75,7 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Main</string>
+   <string>Configure file</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">

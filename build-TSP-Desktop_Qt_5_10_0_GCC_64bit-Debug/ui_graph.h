@@ -59,7 +59,7 @@ public:
         widget_2->setGeometry(QRect(440, 30, 391, 381));
         label = new QLabel(Graph);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(50, 420, 111, 31));
+        label->setGeometry(QRect(20, 430, 111, 31));
         QPalette palette1;
         QBrush brush2(QColor(239, 41, 41, 255));
         brush2.setStyle(Qt::SolidPattern);
@@ -79,7 +79,7 @@ public:
         label->setFont(font);
         label_4 = new QLabel(Graph);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(150, 420, 241, 31));
+        label_4->setGeometry(QRect(140, 430, 241, 31));
         QPalette palette2;
         QBrush brush5(QColor(0, 255, 212, 255));
         brush5.setStyle(Qt::SolidPattern);
@@ -119,7 +119,7 @@ public:
         label_5->setFont(font);
         label_3 = new QLabel(Graph);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(380, 470, 131, 31));
+        label_3->setGeometry(QRect(20, 470, 131, 31));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette5.setBrush(QPalette::Active, QPalette::Text, brush3);
@@ -131,7 +131,7 @@ public:
         label_3->setFont(font);
         label_6 = new QLabel(Graph);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(490, 470, 241, 31));
+        label_6->setGeometry(QRect(140, 470, 241, 31));
         QPalette palette6;
         palette6.setBrush(QPalette::Active, QPalette::WindowText, brush5);
         palette6.setBrush(QPalette::Active, QPalette::Text, brush3);
@@ -143,7 +143,17 @@ public:
         label_6->setFont(font);
         pushButton = new QPushButton(Graph);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(660, 440, 121, 25));
+        pushButton->setGeometry(QRect(540, 470, 131, 41));
+        QPalette palette7;
+        QBrush brush7(QColor(211, 215, 207, 255));
+        brush7.setStyle(Qt::SolidPattern);
+        palette7.setBrush(QPalette::Active, QPalette::Button, brush7);
+        palette7.setBrush(QPalette::Inactive, QPalette::Button, brush7);
+        palette7.setBrush(QPalette::Disabled, QPalette::Button, brush7);
+        pushButton->setPalette(palette7);
+        QFont font1;
+        font1.setPointSize(14);
+        pushButton->setFont(font1);
 
         retranslateUi(Graph);
 
@@ -152,14 +162,14 @@ public:
 
     void retranslateUi(QWidget *Graph)
     {
-        Graph->setWindowTitle(QApplication::translate("Graph", "Form", nullptr));
+        Graph->setWindowTitle(QApplication::translate("Graph", "Graphics", nullptr));
         label->setText(QApplication::translate("Graph", "*Red line", nullptr));
         label_4->setText(QApplication::translate("Graph", " - Algo double replace", nullptr));
         label_2->setText(QApplication::translate("Graph", "*Green line", nullptr));
         label_5->setText(QApplication::translate("Graph", " - Algo tripple replace", nullptr));
         label_3->setText(QApplication::translate("Graph", "*Blue line", nullptr));
         label_6->setText(QApplication::translate("Graph", " - Algo quadro replace", nullptr));
-        pushButton->setText(QApplication::translate("Graph", "PushButton", nullptr));
+        pushButton->setText(QApplication::translate("Graph", "Tooltip", nullptr));
     } // retranslateUi
 
 };

@@ -89,7 +89,7 @@ public:
 
     void retranslateUi(QWidget *Widget)
     {
-        Widget->setWindowTitle(QApplication::translate("Widget", "Main", nullptr));
+        Widget->setWindowTitle(QApplication::translate("Widget", "Configure file", nullptr));
         pushButton->setText(QApplication::translate("Widget", "Open file and show data in table", nullptr));
         labelFileName->setText(QApplication::translate("Widget", "FileName or path", nullptr));
     } // retranslateUi
