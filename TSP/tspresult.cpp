@@ -101,7 +101,7 @@ QString TSPResult::AlgotythmDoubleReplace(int original_massive[QUANT_POINTS][QUA
 
 QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path, int q_point)
 {
-    QString path="";
+   /* QString path="";
     path+=QString::number(start_point);        //add start point in path
     double path_length=0;                       //length path
     int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
@@ -134,35 +134,75 @@ QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QU
                     Swap(int_path,i,i+2);
            }
                       else path_length=CalcPathLength(original_massive,int_path, q_point);
-           /*path_length=CalcPathLength(original_massive,int_path, q_point);
-           Swap(int_path,i,i+1);
-           if (path_length < CalcPathLength(original_massive,int_path, q_point))
-           {
-               Swap(int_path,i+1,i+2);
-               if(path_length<CalcPathLength(original_massive,int_path, q_point))
-               {
-                    Swap(int_path,i+1,i+2);
-                    Swap(int_path,i,i+1);
-               }
-               else Swap(int_path,i,i+1);
-           }
-           else
-           {
-                Swap(int_path,i+1,i+2);
-                   if(path_length<CalcPathLength(original_massive,int_path, q_point))
-                        Swap(int_path,i+1,i+2);
-           }*/
+
        }
  path+="->"+QString::number(int_path[i]+1);      //add points in path result
      }
     path+="->"+QString::number(int_path[q_point-2]+1)+"->"+QString::number(int_path[q_point-1]+1)+"->"+QString::number(start_point);    //add two last point in path
     sum_path=CalcPathLength(original_massive, int_path, q_point);    //calc result length path
     return path;        //return path
+    */
+    QString path="";
+
+    double path_length=0;                       //length path
+    int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
+    int result[QUANT_POINTS];
+    for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
+    {
+        int_path[i]=result[i]=CurrentShortPath[i];
+
+}
+
+
+
+    for(int i=1;i<q_point-2;i++)        //replace two points and compare result
+    {
+       for(int j=0;j<3;j++)
+       {
+           path_length=CalcPathLength(original_massive,int_path, q_point);
+           Swap(int_path,i,i+1);
+           if (path_length > CalcPathLength(original_massive,int_path, q_point))
+           {
+
+               path_length=CalcPathLength(original_massive,int_path, q_point);
+                       for(int z=0;z<q_point;z++)
+                       result[z]=int_path[z];
+           }
+
+           Swap(int_path,i+1,i+2);
+           if (path_length > CalcPathLength(original_massive,int_path, q_point))
+           {
+
+               path_length=CalcPathLength(original_massive,int_path, q_point);
+                       for(int z=0;z<q_point;z++)
+                       result[z]=int_path[z];
+           }
+
+           Swap(int_path,i,i+2);
+           if (path_length > CalcPathLength(original_massive,int_path, q_point))
+           {
+
+               path_length=CalcPathLength(original_massive,int_path, q_point);
+                       for(int z=0;z<q_point;z++)
+                       result[z]=int_path[z];
+           }
+
+
+       }
+       for(int z=0;z<q_point;z++)
+       int_path[z]=result[z];
+     }
+    path+=QString::number(result[0]+1);
+  for(int i=1;i<quantity_points;i++)
+      path+="->"+QString::number(result[i]+1);
+        path+="->"+QString::number(result[0]+1);
+    sum_path=CalcPathLength(original_massive, int_path, q_point);    //calc result length path
+    return path;        //return path
 }
 
 QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUANT_POINTS], int start_point, double &sum_path, int q_point)
 {
-    QString path="";
+  /*  QString path="";
     path+=QString::number(start_point)+"->";        //add start point in path
     double path_length=0;                       //length path
     int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
@@ -210,6 +250,81 @@ QString TSPResult::AlgorythmQuadroReplace(int original_massive[QUANT_POINTS][QUA
 
 
     sum_path=CalcPathLength(original_massive, result_path, q_point);    //calc result length path
+    return path;        //return path*/
+    QString path="";
+   // path+=QString::number(start_point);        //add start point in path
+    double path_length=0;                       //length path
+    int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
+    int result[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
+    for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
+       {
+        int_path[i]=result[i]=CurrentShortPath[i];
+    }
+ path_length=CalcPathLength(original_massive,int_path, q_point);
+    for(int i=1;i<q_point-3;i++)        //replace two points and compare result
+    {
+       for(int kk=1;kk<4;kk++)
+       {
+
+          for(int j=0;j<4;j++)
+       {
+
+           Swap(int_path,i+1,i+2);
+
+
+
+           if (path_length > CalcPathLength(original_massive,int_path, q_point))
+           {
+               path_length=CalcPathLength(original_massive,int_path, q_point);
+                       for(int z=0;z<q_point;z++)
+                       result[z]=int_path[z];
+           };
+           Swap(int_path,i+2,i+3);
+
+
+
+
+
+           if (path_length > CalcPathLength(original_massive,int_path, q_point))
+           {
+               path_length=CalcPathLength(original_massive,int_path, q_point);
+                       for(int z=0;z<q_point;z++)
+                       result[z]=int_path[z];
+           };
+           Swap(int_path,i+1,i+3);
+
+
+
+           if (path_length >CalcPathLength(original_massive,int_path, q_point))
+           {
+               path_length=CalcPathLength(original_massive,int_path, q_point);
+               for(int z=0;z<q_point;z++)
+               result[z]=int_path[z];
+           }
+
+        }
+          Swap(int_path,i,i+kk);
+
+
+
+          if (path_length > CalcPathLength(original_massive,int_path, q_point))
+          {
+
+                 path_length=CalcPathLength(original_massive,int_path, q_point);
+                 for(int z=0;z<q_point;z++)
+                 result[z]=int_path[z];
+          }
+
+       }
+       for(int z=0;z<q_point;z++)
+       int_path[z]=result[z];
+
+}
+    path+=QString::number(result[0]+1);
+  for(int i=1;i<quantity_points;i++)
+      path+="->"+QString::number(result[i]+1);
+        path+="->"+QString::number(result[0]+1);
+    sum_path=CalcPathLength(original_massive, result, q_point);    //calc result length path
     return path;        //return path
 }
 TSPResult::~TSPResult()
