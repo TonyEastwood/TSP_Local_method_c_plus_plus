@@ -83,7 +83,7 @@ void Graph::DrawGraph(double A[4][_GRAPH_SCALE], double T[4][_GRAPH_SCALE], int 
     //вычислить минимальное и максимальное значение в векторах
 
 
-    ui->widget->yAxis->setRange(0, MaxValue(A)+5);//Для оси Oy
+    ui->widget->yAxis->setRange(0, MaxValue(A)+2);//Для оси Oy
 
     //И перерисуем график на нашем widget
     ui->widget->replot();

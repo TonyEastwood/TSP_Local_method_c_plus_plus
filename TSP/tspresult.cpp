@@ -116,6 +116,28 @@ QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QU
            Swap(int_path,i,i+1);
            if (path_length < CalcPathLength(original_massive,int_path, q_point))
            {
+
+                    Swap(int_path,i,i+1);
+           }
+           else path_length=CalcPathLength(original_massive,int_path, q_point);
+           Swap(int_path,i+1,i+2);
+           if (path_length < CalcPathLength(original_massive,int_path, q_point))
+           {
+
+                    Swap(int_path,i+1,i+2);
+           }
+                      else path_length=CalcPathLength(original_massive,int_path, q_point);
+           Swap(int_path,i,i+2);
+           if (path_length < CalcPathLength(original_massive,int_path, q_point))
+           {
+
+                    Swap(int_path,i,i+2);
+           }
+                      else path_length=CalcPathLength(original_massive,int_path, q_point);
+           /*path_length=CalcPathLength(original_massive,int_path, q_point);
+           Swap(int_path,i,i+1);
+           if (path_length < CalcPathLength(original_massive,int_path, q_point))
+           {
                Swap(int_path,i+1,i+2);
                if(path_length<CalcPathLength(original_massive,int_path, q_point))
                {
@@ -129,7 +151,7 @@ QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QU
                 Swap(int_path,i+1,i+2);
                    if(path_length<CalcPathLength(original_massive,int_path, q_point))
                         Swap(int_path,i+1,i+2);
-           }
+           }*/
        }
  path+="->"+QString::number(int_path[i]+1);      //add points in path result
      }

@@ -93,7 +93,7 @@ public:
         label_4->setFont(font);
         label_2 = new QLabel(Graph);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(20, 510, 131, 31));
+        label_2->setGeometry(QRect(20, 460, 131, 31));
         QPalette palette3;
         QBrush brush6(QColor(138, 226, 52, 255));
         brush6.setStyle(Qt::SolidPattern);
@@ -107,7 +107,7 @@ public:
         label_2->setFont(font);
         label_5 = new QLabel(Graph);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(140, 510, 241, 31));
+        label_5->setGeometry(QRect(140, 460, 241, 31));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush5);
         palette4.setBrush(QPalette::Active, QPalette::Text, brush3);
@@ -119,7 +119,7 @@ public:
         label_5->setFont(font);
         label_3 = new QLabel(Graph);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(20, 470, 131, 31));
+        label_3->setGeometry(QRect(20, 490, 131, 31));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette5.setBrush(QPalette::Active, QPalette::Text, brush3);
@@ -131,7 +131,7 @@ public:
         label_3->setFont(font);
         label_6 = new QLabel(Graph);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(140, 470, 241, 31));
+        label_6->setGeometry(QRect(140, 490, 241, 31));
         QPalette palette6;
         palette6.setBrush(QPalette::Active, QPalette::WindowText, brush5);
         palette6.setBrush(QPalette::Active, QPalette::Text, brush3);
