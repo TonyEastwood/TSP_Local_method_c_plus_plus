@@ -45,9 +45,16 @@ private slots:
 
   //  void on_buttAnalyze_clicked();
 
+    void on_radioButton_3_clicked();
+
 private:
     void ErrorStartPoint();
     void RandomGenerateMatrixDistance(int (&)[QUANT_POINTS][QUANT_POINTS], int, int, int);//quant point, start distance, end distance (interval random)
+    void NormDistributGenerateMatrixDistance(int (&)[QUANT_POINTS][QUANT_POINTS], int, int, int);   //algo that generate random value via norm distribution
+                                                                                                    //quant point, start distance, end distance
+    double FunctionNormDistribution(double, float, float);  //function normal distribution
+                                                            //x, expecation, distribution
+
     void ReadFromEditForRandom(int &, int&, int&, int&, int&, int&, int&);
     void InitialDoubleMassive(double *, int);  //initial massive by zero
     void SetProgressBar();          //set value for all progress bar

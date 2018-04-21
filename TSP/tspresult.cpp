@@ -148,11 +148,7 @@ QString TSPResult::AlgotythmTrippleReplace(int original_massive[QUANT_POINTS][QU
     int int_path[QUANT_POINTS];               //massive path a[0]->a[1]->a[2]..->a[0]
     int result[QUANT_POINTS];
     for(int i=0; i<q_point;i++)     //copy massive to changing from Current ShortPath
-    {
         int_path[i]=result[i]=CurrentShortPath[i];
-
-}
-
 
 
     for(int i=1;i<q_point-2;i++)        //replace two points and compare result
@@ -500,6 +496,7 @@ void TSPResult::on_radioButton_clicked()        //check matrix from file
     ui->editPointStep->setEnabled(false);
     ui->editPointTo->setEnabled(false);
     ui->editQuantCycle->setEnabled(false);
+    ui->checkBox->setEnabled(false);
 }
 
 void TSPResult::on_radioButton_2_clicked()      //check matrix from random generate
@@ -518,6 +515,7 @@ void TSPResult::on_radioButton_2_clicked()      //check matrix from random gener
     ui->editPointStep->setEnabled(true);
     ui->editPointTo->setEnabled(true);
     ui->editQuantCycle->setEnabled(true);
+     ui->checkBox->setEnabled(true);
 }
 
 void TSPResult::on_buttRandomGenerate_clicked()
@@ -601,8 +599,9 @@ void TSPResult::on_buttRandomGenerate_clicked()
             QString test;
             //i - current quantity of points
             //j - current numb of cycle of itteration i
+            if(!ui->checkBox->isChecked())
             RandomGenerateMatrixDistance(matrix_distance,i, length_from, length_to);        //generate random data
-
+            else NormDistributGenerateMatrixDistance(matrix_distance,i, length_from, length_to);
              //Start path
             timer.start();                                          //timer start
             test=AlgorythmStartPath(matrix_distance,  start_point, sum_path, i);
@@ -704,6 +703,32 @@ void TSPResult::RandomGenerateMatrixDistance(int (&matr_distance)[QUANT_POINTS][
     }
 }
 
+void TSPResult::NormDistributGenerateMatrixDistance(int (&matr_distance)[QUANT_POINTS][QUANT_POINTS], int quant_point, int l_from, int l_to)
+{
+    QTime time = QTime::currentTime();
+    qsrand((uint)time.msec());
+    for(int i=0;i<quant_point;i++)
+    {
+        for(int j=i;j<quant_point;j++)
+        {
+            if(i!=j)
+            {
+                matr_distance[i][j]= l_from +FunctionNormDistribution(qrand() % ((100 + 1) -0) + 0,50,0.06)/6.66*(l_to-l_from);
+                matr_distance[j][i]=matr_distance[i][j];
+            }
+            else matr_distance[i][j]=_INFINITY;
+        }
+    }
+}
+
+double TSPResult::FunctionNormDistribution(double x, float mat, float gg)
+{
+
+        double a=(1/(gg*sqrt(2*3.14))*pow(2.7,-(x-mat)*(x-mat)/2*gg*gg));   //func norm distribution
+        return a;
+
+}
+
 
 
 void TSPResult::ReadFromEditForRandom(int &q_from, int &q_to, int &q_step, int &l_from, int &l_to, int &q_cycle, int &s_point)
@@ -723,4 +748,10 @@ void TSPResult::InitialDoubleMassive(double *massive, int quant)
 {
     for(int i=0;i<quant;i++)
         *(massive+i)=0;
+}
+
+void TSPResult::on_radioButton_3_clicked()
+{
+
+
 }

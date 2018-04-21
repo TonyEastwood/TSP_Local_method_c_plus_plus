@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -77,6 +78,7 @@ public:
     QLineEdit *editQuantCycle;
     QLabel *label_9;
     QLabel *label_10;
+    QCheckBox *checkBox;
 
     void setupUi(QWidget *TSPResult)
     {
@@ -706,6 +708,16 @@ public:
         QFont font2;
         font2.setPointSize(16);
         label_10->setFont(font2);
+        checkBox = new QCheckBox(TSPResult);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setEnabled(false);
+        checkBox->setGeometry(QRect(350, 540, 201, 23));
+        QPalette palette52;
+        palette52.setBrush(QPalette::Active, QPalette::WindowText, brush4);
+        palette52.setBrush(QPalette::Inactive, QPalette::WindowText, brush4);
+        palette52.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        checkBox->setPalette(palette52);
+        checkBox->setFont(font);
 
         retranslateUi(TSPResult);
 
@@ -758,6 +770,7 @@ public:
         editQuantCycle->setText(QApplication::translate("TSPResult", "5", nullptr));
         label_9->setText(QApplication::translate("TSPResult", "MAX quantity points=", nullptr));
         label_10->setText(QString());
+        checkBox->setText(QApplication::translate("TSPResult", "Normal distribution", nullptr));
     } // retranslateUi
 
 };
